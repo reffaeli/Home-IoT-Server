@@ -2,7 +2,7 @@
 
     <div class=container>
         <h3 style="color: red"> {{error}} </h3>
-        <h1> Switchs:</h1>
+        <h1> מתגים:</h1>
         <div class="row">
             <div ng-repeat="device in devices | orderBy : 'name' " class="card card-5 ">
 
@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <h1 ng-show="GetFiltedDevices('light').length > 0"> Lights:</h1>
+        <h1 ng-show="GetFiltedDevices('light').length > 0"> תאורה:</h1>
 
         <div class="row">
             <div ng-repeat="light in GetFiltedDevices('light') | orderBy : 'name' " class="card card-5 ">
@@ -28,14 +28,14 @@
 
 
                 <div class="brightness">
-                    Brightness
+                    בהירות
                     <br>
                     <input type="number" min="1" max="100" ng-change="SetLight(light, 'light')" ng-model="light.bright" />
                 </div>
             </div>
         </div>
 
-        <h1 ng-show="GetFiltedDevices('white_temp').length > 0"> Lights Temp:</h1>
+        <h1 ng-show="GetFiltedDevices('white_temp').length > 0"> טמפרטורת תאורה:</h1>
 
         <div class="row">
             <div ng-repeat="light in GetFiltedDevices('white_temp') | orderBy : 'name' " class="card card-5 ">
@@ -44,14 +44,14 @@
 
 
                 <div class="brightness">
-                    Temperature
+                    טמפרטורה 
                     <br>
                     <input type="number" min="1" max="100" ng-change="SetLight(light, 'white_temp')" ng-model="light.white_temp" />
                 </div>
             </div>
         </div>
 
-        <h1 ng-show="GetFiltedDevices('light_color').length > 0"> Lights Temp:</h1>
+        <h1 ng-show="GetFiltedDevices('light_color').length > 0"> תאורה צבעונית:</h1>
 
         <div class="row">
             <div ng-repeat="light in GetFiltedDevices('light_color') | orderBy : 'name' " class="card card-5 ">
@@ -60,54 +60,51 @@
 
 
                 <div class="color-red">
-                    Red
+                    אדום
                     <br>
                     <input type="number" min="1" max="255" ng-change="SetLight(light, 'light_color')" ng-model="light.light_color.red" />
                 </div>
                 <div class="color-green">
-                    Green
+                    ירוק
                     <br>
                     <input type="number" min="1" max="255" ng-change="SetLight(light, 'light_color')" ng-model="light.light_color.green" />
                 </div>
                 <div  class="color-blue">
-                    Blue
+                    כחול
                     <br>
                     <input type="number" min="1" max="255" ng-change="SetLight(light, 'light_color')" ng-model="light.light_color.blue" />
                 </div>
             </div>
         </div>
 
-        <h1 ng-show="GetFiltedDevices('ac').length > 0"> Air conditioners:</h1>
+        <h1 ng-show="GetFiltedDevices('ac').length > 0"> מזגנים:</h1>
         <div class="row">
             <div ng-repeat="ac in GetFiltedDevices('ac') | orderBy : 'name' " class="card card-5 ">
                 <h3 class=light-name>{{ac.name}}</h3>
 
                 <div class="ac-mode">
-                    Mode
+                    מצב
                     <br>
 
                     <select ng-model="ac.ac.mode" ng-change="SetAC(ac)">
-                        <option value=auto>auto</option>
-                        <option value=hot>hot </option>
-                        <option value=cold>cold </option>
-                        <option value=dry>dry</option>
-                        <option value=fan>fan</option>
+                        <option value=hot>חום </option>
+                        <option value=cold>קור </option>
                     </select>
                 </div>
 
                 <div class="fan_strength">
-                    fan_strength
+                    עוצמת רוח
                     <br>
 
                     <select ng-model="ac.ac.fan_strength" ng-change="SetAC(ac)">
-                        <option value=auto>auto</option>
-                        <option value=high>high </option>
-                        <option value=med>med </option>
-                        <option value=low>low</option>
+                        <option value=auto>אוטומטי</option>
+                        <option value=high>חזק </option>
+                        <option value=med>בינוני </option>
+                        <option value=low>חלש</option>
                     </select>
                 </div>
                 <div class="ac-temp">
-                    Temp
+                    טמפרטורה
                     <br>
                     <input type="number" min="16" max="30" ng-model="ac.ac.temp" ng-change="SetAC(ac)" />
                 </div>
@@ -118,7 +115,7 @@
             <br>
             <br>
             <br>
-            <a class="btn btn-default btn-lg " ng-click="GetDevices()">Refresh data</a>
-            <a class="btn btn-default btn-lg " ng-click="RefreshData()">Rescan lan devices</a>
+            <a class="btn btn-default btn-lg " ng-click="GetDevices()">עדכן נתונים</a>
+            <a class="btn btn-default btn-lg " ng-click="RefreshData()">סרוק שוב את הרשת</a>
         </div>
     </div>
