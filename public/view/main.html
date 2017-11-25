@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="submit_value">
-                    <a class="btn btn-default btn-sm" ng-click="SetLight(light, 'light')">Update</a>
+                    <a class="btn btn-default btn-sm" ng-click="SetLight(light, 'light')">עדכן</a>
                 </div>
             </div>
         </div>
@@ -54,16 +54,12 @@
                 </div>
 
                 <div class="submit_value">
-                    <a class="btn btn-default btn-sm" ng-click="SetLight(light, 'white_temp')">Update</a>
+                    <a class="btn btn-default btn-sm" ng-click="SetLight(light, 'white_temp')">עדכן</a>
                 </div>
             </div>
         </div>
-
-<<<<<<< HEAD
+		
         <h1 ng-show="GetFiltedDevices('light_color').length > 0"> תאורה צבעונית:</h1>
-=======
-        <h1 ng-show="GetFiltedDevices('light_color').length > 0"> Lights Color:</h1>
->>>>>>> master
 
         <div class="row">
             <div ng-repeat="light in GetFiltedDevices('light_color') | orderBy : 'name' " class="card card-5 ">
@@ -81,19 +77,14 @@
                     <br>
                     <input type="number" min="1" max="255" ng-model="light.light_color.green" />
                 </div>
-<<<<<<< HEAD
                 <div  class="color-blue">
                     כחול
-=======
-                <div class="color-blue">
-                    Blue
->>>>>>> master
                     <br>
                     <input type="number" min="1" max="255"  ng-model="light.light_color.blue" />
                 </div>
 
                 <div class="submit_value">
-                    <a class="btn btn-default btn-sm" ng-click="SetLight(light, 'light_color')">Update</a>
+                    <a class="btn btn-default btn-sm" ng-click="SetLight(light, 'light_color')">עדכן</a>
                 </div>
             </div>
         </div>
@@ -106,39 +97,20 @@
                 <div class="ac-mode">
                     מצב
                     <br>
-
-<<<<<<< HEAD
-                    <select ng-model="ac.ac.mode" ng-change="SetAC(ac)">
+                    <select ng-model="ac.ac.mode">
                         <option value=hot>חום </option>
                         <option value=cold>קור </option>
-=======
-                    <select ng-model="ac.ac.mode" >
-                        <option value=auto>auto</option>
-                        <option value=hot>hot </option>
-                        <option value=cold>cold </option>
-                        <option value=dry>dry</option>
-                        <option value=fan>fan</option>
->>>>>>> master
                     </select>
                 </div>
 
                 <div class="fan_strength">
                     עוצמת רוח
                     <br>
-
-<<<<<<< HEAD
-                    <select ng-model="ac.ac.fan_strength" ng-change="SetAC(ac)">
+                    <select ng-model="ac.ac.fan_strength">
                         <option value=auto>אוטומטי</option>
                         <option value=high>חזק </option>
                         <option value=med>בינוני </option>
                         <option value=low>חלש</option>
-=======
-                    <select ng-model="ac.ac.fan_strength">
-                        <option value=auto>auto</option>
-                        <option value=high>high </option>
-                        <option value=med>med </option>
-                        <option value=low>low</option>
->>>>>>> master
                     </select>
                 </div>
                 <div class="ac-temp">
@@ -148,7 +120,7 @@
                 </div>
 
                 <div class="submit_value">
-                    <a class="btn btn-default btn-sm" ng-click="SetAC(ac)">Update</a>
+                    <a class="btn btn-default btn-sm" ng-click="SetAC(ac)">עדכן</a>
                 </div>
             </div>
 
