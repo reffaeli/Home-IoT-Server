@@ -74,6 +74,7 @@ var CheckAccess = function (req, res, next) {
   if (!CheckSession(ip)) {
     res.statusCode = 403;
     res.send(`you not connected!!!`);
+    res.send('Athontication error');
   } else {
     next();
   }
