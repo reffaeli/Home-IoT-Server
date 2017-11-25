@@ -39,6 +39,15 @@
             "switch"
         ]
     },
+	"id4": {
+        "mac": "34ea348ee66f",
+        "ip": "192.168.1.27",
+        "name": "תנור",
+        "brand": "Broadlink",
+        "types": [
+            "switch"
+        ]
+    },
     "id5": {
         "mac": "34ce00bc9b57",
         "ip": "192.168.1.72",
