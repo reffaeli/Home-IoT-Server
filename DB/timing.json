@@ -7,17 +7,12 @@
 			"saturday"
 		],
 		"time": "17:32",
-		"trigger": "testing"
+		"trigger": "testingold"
 	},
 	"2": {
 		"timingType": "once",
 		"date": "01-12-17",
 		"time": "13:58",
-		"trigger": "testing"
-    },
-    "3" : {
-        "timingType" : "timer",
-        "durationInMinuts" : 300,
-        "trigger" : "testing"
-    }
+		"trigger": "testingold"
+	}
 }
