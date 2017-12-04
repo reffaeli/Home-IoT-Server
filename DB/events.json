@@ -1,65 +1,26 @@
 {
-	"testing": {
-		"name": "testing",
+	"veghjdjre": {
+		"name": "מים חמים לבוקר",
 		"actions": [
 			{
-				"deviceID": "id6",
+				"deviceID": "id3",
 				"type": "switch",
 				"state": "on"
 			}
 		]
 	},
 	"vwwrp55sq": {
-		"name": "AC_Event",
+		"name": "כיבוי בוילר ומזגן מושי",
 		"actions": [
 			{
-				"deviceID": "id0",
-				"type": "ac",
-				"state": "on",
-				"set": {
-					"mode": "fan",
-					"fan_strength": "low",
-					"temp": 22
-				}
-			}
-		]
-	},
-	"vwwrp88sq": {
-		"name": "AC_Event",
-		"actions": [
-			{
-				"deviceID": "id0",
+				"deviceID": "id3",
 				"type": "switch",
 				"state": "off"
-			}
-		]
-	},
-	"SynCp05sb": {
-		"name": "Event1",
-		"actions": [
-			{
-				"deviceID": "id6",
-				"type": "switch",
-				"state": "off"
-			}
-		]
-	},
-	"H1MXuQzhW": {
-		"name": "EditEvent3",
-		"actions": [
-			{
-				"deviceID": "id2",
-				"type": "switch",
-				"state": "on"
 			},
 			{
-				"deviceID": "id6",
-				"type": "light",
-				"state": "on",
-				"set": {
-					"bright": 1,
-					"color": 50
-				}
+				"deviceID": "id1",
+				"type": "switch",
+				"state": "off"
 			}
 		]
 	}

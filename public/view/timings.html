@@ -1,0 +1,84 @@
+<div class="panel panel-warning">
+    <!-- panel to show current event name -->
+    <div class="panel-heading">תזמון יומי</div>
+    <!-- panel to show current event menu -->
+    <div class="panel-body">
+        <div style="margin:20px;">
+            <!--show menues in expender view-->
+            <div class="panel-group" id="accordion{{timing.id}}">
+                <div ng-repeat="timing in dailyTimings" class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion{{timing.id}}" data-target="#{{timing.id}}">שם פעולה: {{timing.triggerName}}</a>
+                        </h4>
+                    </div>
+                    <div id="{{timing.id}}" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            ימים:
+                            <ul>
+                                <li ng-repeat="day in timing.days">{{day}}</li>
+                            </ul>
+
+                            זמן:
+                            <b> {{timing.time}} </b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel panel-info">
+    <!-- panel to show current event name -->
+    <div class="panel-heading">תזמון חד-פעמי</div>
+    <!-- panel to show current event menu -->
+    <div class="panel-body">
+        <div style="margin:20px;">
+            <!--show menues in expender view-->
+            <div class="panel-group" id="accordion{{timing.id}}">
+                <div ng-repeat="timing in onceTimings" class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion{{timing.id}}" data-target="#{{timing.id}}">בצע פעולה: {{timing.triggerName}}</a>
+                        </h4>
+                    </div>
+                    <div id="{{timing.id}}" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            תאריך:
+                            <b> {{timing.date}} </b>
+
+                            זמן:
+                            <b> {{timing.time}} </b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel panel-danger">
+    <!-- panel to show current event name -->
+    <div class="panel-heading">תזמון טיימר</div>
+    <!-- panel to show current event menu -->
+    <div class="panel-body">
+        <div style="margin:20px;">
+            <!--show menues in expender view-->
+            <div class="panel-group" id="accordion{{timing.id}}">
+                <div ng-repeat="timing in timerTimings" class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion{{timing.id}}" data-target="#{{timing.id}}">בצע פעולה: {{timing.triggerName}}</a>
+                        </h4>
+                    </div>
+                    <div id="{{timing.id}}" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            
+                            טווח השהיה (בדקות):
+                            <b> {{timing.durationInMinuts}} </b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

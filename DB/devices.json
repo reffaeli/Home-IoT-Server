@@ -62,5 +62,18 @@
             "white_temp"
         ],
         "token": "3d5f7ae53b51aa312e464b150b37453b"
+    },
+    "id7": {
+        "mac": "34ce008cd7bc",
+        "ip": "192.168.1.32",
+        "name": "תאורה צבעונית",
+        "brand": "Yeelight",
+        "types": [
+            "switch",
+            "light",
+            "white_temp",
+            "light_color"            
+        ],
+        "token": "28dc5d6c9a7c3ee43e3fe49a2038b4ea"
     }
 }

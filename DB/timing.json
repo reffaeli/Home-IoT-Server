@@ -3,16 +3,24 @@
 		"timingType": "daily",
 		"days": [
 			"sunday",
-			"thursday",
-			"saturday"
+			"monday",
+			"tuesday",
+			"wednesday",
+			"thursday"
 		],
-		"time": "17:32",
-		"trigger": "testingold"
+		"time": "05:00",
+		"trigger": "veghjdjre"
 	},
 	"2": {
-		"timingType": "once",
-		"date": "01-12-17",
-		"time": "13:58",
-		"trigger": "testingold"
+		"timingType": "daily",
+		"days": [
+			"sunday",
+			"monday",
+			"tuesday",
+			"wednesday",
+			"thursday"
+		],
+		"time": "05:45",
+		"trigger": "vwwrp55sq"
 	}
 }
