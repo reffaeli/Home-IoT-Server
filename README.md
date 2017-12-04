@@ -69,7 +69,6 @@ http://127.0.0.1:3000/
 very basic application (compatible to mobile)
 
 ## Using (HTTP API)
-After the server runing we can access to all devices in devices.json file simply, 
 
 ### Athontication API
 
