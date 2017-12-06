@@ -9,7 +9,8 @@
 			"thursday"
 		],
 		"time": "05:00",
-		"trigger": "veghjdjre"
+		"trigger": "veghjdjre",
+		"active" : "on"
 	},
 	"2": {
 		"timingType": "daily",
@@ -21,6 +22,33 @@
 			"thursday"
 		],
 		"time": "05:45",
-		"trigger": "vwwrp55sq"
+		"trigger": "vwwrp55sq",
+		"active" : "on"
+	},
+	"3": {
+		"timingType": "daily",
+		"days": [
+			"sunday",
+			"monday",
+			"tuesday",
+			"wednesday",
+			"thursday"
+		],
+		"time": "17:30",
+		"trigger": "veghjdjre",
+		"active" : "on"
+	},
+	"4": {
+		"timingType": "daily",
+		"days": [
+			"sunday",
+			"monday",
+			"tuesday",
+			"wednesday",
+			"thursday"
+		],
+		"time": "18:15",
+		"trigger": "fheu89ddj",
+		"active" : "on"
 	}
 }

@@ -1,11 +1,21 @@
 {
 	"veghjdjre": {
-		"name": "מים חמים לבוקר",
+		"name": "מים חמים",
 		"actions": [
 			{
 				"deviceID": "id3",
 				"type": "switch",
 				"state": "on"
+			}
+		]
+	},
+	"fheu89ddj": {
+		"name": "כיבוי מים חמים",
+		"actions": [
+			{
+				"deviceID": "id3",
+				"type": "switch",
+				"state": "off"
 			}
 		]
 	},
