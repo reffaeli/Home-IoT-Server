@@ -9,7 +9,7 @@
                 <div ng-repeat="timing in dailyTimings" class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion{{timing.id}}" data-target="#{{timing.id}}">שם פעולה: {{timing.triggerName}}</a>
+                            <a data-toggle="collapse" data-parent="#accordion{{timing.id}}" data-target="#{{timing.id}}">הפעל: {{timing.triggerName}}</a>
                             <button type="button" class="btn btn-sm btn-toggle" data-toggle="button" aria-pressed="({timing.active == 'on')}" autocomplete="{{timing.active == 'on' ? 'on' : 'off'}}"
                                 ng-class="timing.active == 'on' ? 'active' : ''" ng-click="TuggelTimingActive(timing)">
                                 <div class="handle"></div>
@@ -43,7 +43,7 @@
                 <div ng-repeat="timing in onceTimings" class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion{{timing.id}}" data-target="#{{timing.id}}">בצע פעולה: {{timing.triggerName}}</a>
+                            <a data-toggle="collapse" data-parent="#accordion{{timing.id}}" data-target="#{{timing.id}}">הפעל: {{timing.triggerName}}</a>
 							<button type="button" class="btn btn-sm btn-toggle" data-toggle="button" aria-pressed="({timing.active == 'on')}" autocomplete="{{timing.active == 'on' ? 'on' : 'off'}}"
                                 ng-class="timing.active == 'on' ? 'active' : ''" ng-click="TuggelTimingActive(timing)">
                                 <div class="handle"></div>
@@ -75,7 +75,7 @@
                 <div ng-repeat="timing in timerTimings" class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion{{timing.id}}" data-target="#{{timing.id}}">בצע פעולה: {{timing.triggerName}}</a>
+                            <a data-toggle="collapse" data-parent="#accordion{{timing.id}}" data-target="#{{timing.id}}">הפעל: {{timing.triggerName}}</a>
 							<button type="button" class="btn btn-sm btn-toggle" data-toggle="button" aria-pressed="({timing.active == 'on')}" autocomplete="{{timing.active == 'on' ? 'on' : 'off'}}"
                                 ng-class="timing.active == 'on' ? 'active' : ''" ng-click="TuggelTimingActive(timing)">
                                 <div class="handle"></div>
