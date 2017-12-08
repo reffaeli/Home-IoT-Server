@@ -19,7 +19,8 @@
 			"monday",
 			"tuesday",
 			"wednesday",
-			"thursday"
+			"thursday",
+			"friday"
 		],
 		"time": "05:45",
 		"trigger": "vwwrp55sq",

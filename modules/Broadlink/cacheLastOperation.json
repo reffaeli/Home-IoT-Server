@@ -15,6 +15,6 @@
 			"fan_strength": "low",
 			"temp": 27
 		},
-		"state": "on"
+		"state": "off"
 	}
 }
