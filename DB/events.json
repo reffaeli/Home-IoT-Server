@@ -33,5 +33,25 @@
 				"state": "off"
 			}
 		]
+	},
+	"uxgnjcju6j": {
+		"name": "מזגן מושי",
+		"actions": [
+			{
+				"deviceID": "id1",
+				"type": "switch",
+				"state": "on"
+			}
+		]
+	},
+	"hd63jkvh2": {
+		"name": "כיבוי מזגן מושי",
+		"actions": [
+			{
+				"deviceID": "id1",
+				"type": "switch",
+				"state": "off"
+			}
+		]
 	}
 }
