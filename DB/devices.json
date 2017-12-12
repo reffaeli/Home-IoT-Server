@@ -2,7 +2,7 @@
     "id0": {
         "mac": "34ea348ee66f",
         "ip": "192.168.1.16",
-        "name": "מיזוג  בסלון",
+        "name": "מזגן סלון",
         "brand": "Broadlink",
         "types": [
             "switch",
@@ -13,7 +13,7 @@
     "id01": {
         "mac": "34ea34409ba8",
         "ip": "192.168.1.13",
-        "name": "מיזוג  שינה",
+        "name": "מזגן ח. שינה",
         "brand": "Broadlink",
         "types": [
             "switch",
