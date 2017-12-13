@@ -12,7 +12,7 @@
     },
     "id01": {
         "mac": "34ea34409ba8",
-        "ip": "192.168.1.13",
+        "ip": "192.168.1.21",
         "name": "מזגן ח. שינה",
         "brand": "Broadlink",
         "types": [
@@ -21,14 +21,17 @@
         ],
         "deviceIdentity": "SleepAC"
     },
-    "id1": {
-        "mac": "34ea34f5b7d2",
-        "ip": "192.168.1.82",
+	"id02": {
+        "mac": "34ea3442a91b",
+        "ip": "192.168.1.13",
         "name": "מזגן מושי",
         "brand": "Broadlink",
+        "model" : "RM3",
         "types": [
-            "switch"
-        ]
+            "switch",
+            "ac"
+        ],
+        "deviceIdentity": "MusheAC"
     },
     "id3": {
         "mac": "accf2334e632",

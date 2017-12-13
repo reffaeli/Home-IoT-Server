@@ -69,5 +69,14 @@
 		"time": "07:00",
 		"trigger": "hd63jkvh2",
 		"active": "on"
+	},
+	"5temp": {
+		"timingType": "daily",
+		"days": [
+			"wednesday"
+		],
+		"time": "07:54",
+		"trigger": "uxgnjcju6j",
+		"active": "off"
 	}
 }

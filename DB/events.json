@@ -28,7 +28,7 @@
 				"state": "off"
 			},
 			{
-				"deviceID": "id1",
+				"deviceID": "id02",
 				"type": "switch",
 				"state": "off"
 			}
@@ -38,9 +38,14 @@
 		"name": "מזגן מושי",
 		"actions": [
 			{
-				"deviceID": "id1",
-				"type": "switch",
-				"state": "on"
+				"deviceID": "id02",
+				"type": "ac",
+				"state": "on",
+				"set": {
+					"mode": "hot",
+					"fan_strength": "med",
+					"temp": 26
+				}
 			}
 		]
 	},
@@ -48,7 +53,7 @@
 		"name": "כיבוי מזגן מושי",
 		"actions": [
 			{
-				"deviceID": "id1",
+				"deviceID": "id02",
 				"type": "switch",
 				"state": "off"
 			}
