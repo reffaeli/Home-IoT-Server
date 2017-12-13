@@ -10,7 +10,7 @@
 		],
 		"time": "05:00",
 		"trigger": "veghjdjre",
-		"active": "on"
+		"active": "off"
 	},
 	"2": {
 		"timingType": "daily",
@@ -37,7 +37,7 @@
 		],
 		"time": "17:30",
 		"trigger": "veghjdjre",
-		"active": "on"
+		"active": "off"
 	},
 	"4": {
 		"timingType": "daily",
@@ -50,7 +50,7 @@
 		],
 		"time": "18:15",
 		"trigger": "fheu89ddj",
-		"active": "on"
+		"active": "off"
 	},
 	"5": {
 		"timingType": "daily",

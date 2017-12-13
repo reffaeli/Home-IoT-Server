@@ -1,130 +1,86 @@
 <div>
-
     <div class=container>
-        <h3 style="color: red"> {{error}} </h3>
-        <h1> מתגים:</h1>
-        <div class="row">
-            <div ng-repeat="device in devices | orderBy : 'name' " class="card card-5 ">
-
+            <div ng-repeat="device in devices | orderBy : 'typeName' " class="card card-5 " 
+                 ng-class="GetDeviceClass(device)">
                 <h2 class=device-name>{{device.name}}</h2>
 
                 <label for="switch{{device.deviceID}}">
-                    <input type="checkbox" ng-checked="device.state == 'on'" ng-click="SetState(device)"
-                        id="switch{{device.deviceID}}" />
+                    <input type="checkbox" ng-checked="device.state == 'on'" ng-click="SetState(device)" id="switch{{device.deviceID}}" />
                     <span class="switch">
                     </span>
                     <span ng-class="device.state == 'error' ? 'disable' : ''" class="toggle">
                     </span>
                 </label>
+                <!-- brightness -->
+                <div ng-if="device.isBrightness">
+                    <div class="brightness-area">
+                        בהירות:
+                        <br>
+                        <article>
+                            <rzslider rz-slider-model="device.brightnessSlider.value" rz-slider-options="device.brightnessSlider.options"></rzslider>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- white temp -->
+                <div ng-if="device.isWhiteTemp">
+                    <div class="white-color-area">
+                        טמפרטורת תאורה:
+                        <br>
+                        <article>
+                            <rzslider rz-slider-model="device.whiteTempSlider.value" rz-slider-options="device.whiteTempSlider.options"></rzslider>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- color -->
+                <div ng-if="device.isColor">
+                    <div class="color-area">
+                        <rzslider class="color-red-area" rz-slider-model="device.redSlider.value" rz-slider-options="device.redSlider.options"></rzslider>
+                        <rzslider class="color-green-area" rz-slider-model="device.greenSlider.value" rz-slider-options="device.greenSlider.options"></rzslider>
+                        <rzslider class="color-blue-area" rz-slider-model="device.blueSlider.value" rz-slider-options="device.blueSlider.options"></rzslider>
+                    </div>
+
+                </div>
+                <!-- ac -->
+                <div ng-if="device.isAC">
+                    <div class="ac-mode-area">
+                        מצב:
+                        <br>
+
+                        <select ng-model="device.ac.mode">
+                            <option value=hot>חום </option>
+                            <option value=cold>קור </option>                      
+                        </select>
+                    </div>
+
+                    <div class="fan_strength-area">
+                        עצמת רוח:
+                        <br>
+
+                        <select ng-model="device.ac.fan_strength">
+                            <option value=auto>אוטומטי</option>
+                            <option value=high>חזק </option>
+                            <option value=med>בינוני </option>
+                            <option value=low>חלש</option>
+                        </select>
+                    </div>
+
+                    <div class="ac-temp-area">
+                        טמפרטורה:
+                        <br>
+                        <article>
+                            <rzslider rz-slider-model="device.acTempSlider.value" rz-slider-options="device.acTempSlider.options"></rzslider>
+                        </article>
+                    </div>
+                </div>
+
+
+                <div class="submit_value" >
+                    <a class="btn btn-default btn-sm" ng-click="ShowDetails(device)">פרטים טכניים</a>
+                </div>
             </div>
         </div>
-
-        <h1 ng-show="GetFiltedDevices('light').length > 0"> תאורה:</h1>
-
-        <div class="row">
-            <div ng-repeat="light in GetFiltedDevices('light') | orderBy : 'name' " class="card card-5 ">
-
-                <h3 class=light-name>{{light.name}}</h3>
-
-
-                <div class="brightness">
-                    בהירות
-                    <br>
-                    <input type="number" min="1" max="100" ng-model="light.bright" />
-                </div>
-
-                <div class="submit_value">
-                    <a class="btn btn-default btn-sm" ng-click="SetLight(light, 'light')">עדכן</a>
-                </div>
-            </div>
-        </div>
-
-        <h1 ng-show="GetFiltedDevices('white_temp').length > 0"> טמפרטורת תאורה:</h1>
-
-        <div class="row">
-            <div ng-repeat="light in GetFiltedDevices('white_temp') | orderBy : 'name' " class="card card-5 ">
-
-                <h3 class=light-name>{{light.name}}</h3>
-
-
-                <div class="brightness">
-                    טמפרטורה 
-                    <br>
-                    <input type="number" min="1" max="100" ng-model="light.white_temp" />
-                </div>
-
-                <div class="submit_value">
-                    <a class="btn btn-default btn-sm" ng-click="SetLight(light, 'white_temp')">עדכן</a>
-                </div>
-            </div>
-        </div>
-		
-        <h1 ng-show="GetFiltedDevices('light_color').length > 0"> תאורה צבעונית:</h1>
-
-        <div class="row">
-            <div ng-repeat="light in GetFiltedDevices('light_color') | orderBy : 'name' " class="card card-5 ">
-
-                <h3 class=light-name>{{light.name}}</h3>
-
-
-                <div class="color-red">
-                    אדום
-                    <br>
-                    <input type="number" min="1" max="255" ng-model="light.light_color.red" />
-                </div>
-                <div class="color-green">
-                    ירוק
-                    <br>
-                    <input type="number" min="1" max="255" ng-model="light.light_color.green" />
-                </div>
-                <div  class="color-blue">
-                    כחול
-                    <br>
-                    <input type="number" min="1" max="255"  ng-model="light.light_color.blue" />
-                </div>
-                <div class="submit_value_color">
-                    <a class="btn btn-default btn-sm" ng-click="SetLight(light, 'light_color')">עדכן</a>
-                </div>
-            </div>
-        </div>
-
-        <h1 ng-show="GetFiltedDevices('ac').length > 0"> מזגנים:</h1>
-        <div class="row">
-            <div ng-repeat="ac in GetFiltedDevices('ac') | orderBy : 'name' " class="card card-5 ">
-                <h3 class=light-name>{{ac.name}}</h3>
-
-                <div class="ac-mode">
-                    מצב
-                    <br>
-                    <select ng-model="ac.ac.mode">
-                        <option value=hot>חום </option>
-                        <option value=cold>קור </option>
-                    </select>
-                </div>
-
-                <div class="fan_strength">
-                    עוצמת רוח
-                    <br>
-                    <select ng-model="ac.ac.fan_strength">
-                        <option value=auto>אוטומטי</option>
-                        <option value=high>חזק </option>
-                        <option value=med>בינוני </option>
-                        <option value=low>חלש</option>
-                    </select>
-                </div>
-                <div class="ac-temp">
-                    טמפרטורה
-                    <br>
-                    <input type="number" min="16" max="30" ng-model="ac.ac.temp" />
-                </div>
-
-                <div class="submit_value">
-                    <a class="btn btn-default btn-sm" ng-click="SetAC(ac)">עדכן</a>
-                </div>
-            </div>
-
-
-
             <br>
             <br>
             <br>

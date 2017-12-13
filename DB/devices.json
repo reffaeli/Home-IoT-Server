@@ -4,6 +4,7 @@
         "ip": "192.168.1.16",
         "name": "מזגן סלון",
         "brand": "Broadlink",
+		"model" : "RM3",
         "types": [
             "switch",
             "ac"
@@ -15,6 +16,7 @@
         "ip": "192.168.1.21",
         "name": "מזגן ח. שינה",
         "brand": "Broadlink",
+		"model" : "RM3",
         "types": [
             "switch",
             "ac"
@@ -38,6 +40,7 @@
         "ip": "192.168.1.22",
         "name": "בוילר",
         "brand": "Orvibo",
+		"model" : "S20",
         "types": [
             "switch"
         ]
@@ -45,8 +48,9 @@
     "id5": {
         "mac": "34ce00bc9b57",
         "ip": "192.168.1.72",
-        "name": "תאורת חדר שינה",
+        "name": "תאורת ח. שינה",
         "brand": "Yeelight",
+		"model" : "Ceiling",
         "types": [
             "switch",
             "light",
@@ -59,6 +63,7 @@
         "ip": "192.168.1.26",
         "name": "תאורת סלון",
         "brand": "Philips",
+		"model" : "Ceiling",
         "types": [
             "switch",
             "light",
@@ -69,8 +74,9 @@
     "id7": {
         "mac": "34ce008cd7bc",
         "ip": "192.168.1.32",
-        "name": "תאורת חדר מושי",
+        "name": "תאורת ח. מושי",
         "brand": "Yeelight",
+		"model" : "E27-Bulb",
         "types": [
             "switch",
             "light",
