@@ -47,8 +47,7 @@
                     <div class="ac-mode-area">
                         מצב:
                         <br>
-
-                        <select ng-model="device.ac.mode">
+                        <select ng-model="device.ac.mode" ng-change="SetAC(device)">
                             <option value=hot>חום </option>
                             <option value=cold>קור </option>                      
                         </select>
@@ -57,8 +56,7 @@
                     <div class="fan_strength-area">
                         עצמת רוח:
                         <br>
-
-                        <select ng-model="device.ac.fan_strength">
+                        <select ng-model="device.ac.fan_strength" ng-change="SetAC(device)">
                             <option value=auto>אוטומטי</option>
                             <option value=high>חזק </option>
                             <option value=med>בינוני </option>
