@@ -1,5 +1,21 @@
 <div>
     <div class=container>
+
+        <!-- Loading animation -->
+        <!-- Thanks for https://icons8.com/cssload/en/spinners/5 -->
+        <div ng-if="loading" class="cssload-container">
+            <div class="cssload-shaft1"></div>
+            <div class="cssload-shaft2"></div>
+            <div class="cssload-shaft3"></div>
+            <div class="cssload-shaft4"></div>
+            <div class="cssload-shaft5"></div>
+            <div class="cssload-shaft6"></div>
+            <div class="cssload-shaft7"></div>
+            <div class="cssload-shaft8"></div>
+            <div class="cssload-shaft9"></div>
+            <div class="cssload-shaft10"></div>
+        </div>
+		
             <div ng-repeat="device in devices | orderBy : 'typeName' " class="card card-5 " 
                  ng-class="GetDeviceClass(device)">
                 <h2 class=device-name>{{device.name}}</h2>
@@ -33,58 +49,71 @@
                     </div>
                 </div>
 
-                <!-- color -->
-                <div ng-if="device.isColor">
-                    <div class="color-area">
-                        <rzslider class="color-red-area" rz-slider-model="device.redSlider.value" rz-slider-options="device.redSlider.options"></rzslider>
-                        <rzslider class="color-green-area" rz-slider-model="device.greenSlider.value" rz-slider-options="device.greenSlider.options"></rzslider>
-                        <rzslider class="color-blue-area" rz-slider-model="device.blueSlider.value" rz-slider-options="device.blueSlider.options"></rzslider>
-                    </div>
 
-                </div>
-                <!-- ac -->
-                <div ng-if="device.isAC">
-                    <div class="ac-mode-area">
-                        מצב:
-                        <br>
-                        <select ng-model="device.ac.mode" ng-change="SetAC(device)">
-                            <option value=hot>חום </option>
-                            <option value=cold>קור </option>                      
-                        </select>
-                    </div>
-
-                    <div class="fan_strength-area">
-                        עצמת רוח:
-                        <br>
-                        <select ng-model="device.ac.fan_strength" ng-change="SetAC(device)">
-                            <option value=auto>אוטומטי</option>
-                            <option value=high>חזק </option>
-                            <option value=med>בינוני </option>
-                            <option value=low>חלש</option>
-                        </select>
-                    </div>
-
-                    <div class="ac-temp-area">
-                        טמפרטורה:
-                        <br>
-                        <article>
-                            <rzslider rz-slider-model="device.acTempSlider.value" rz-slider-options="device.acTempSlider.options"></rzslider>
-                        </article>
-                    </div>
+            <!-- color -->
+            <div ng-if="device.isColor">
+            <div class="color-area">
+                <rzslider class="color-red-area" rz-slider-model="device.redSlider.value" rz-slider-options="device.redSlider.options"></rzslider>
+                <rzslider class="color-green-area" rz-slider-model="device.greenSlider.value" rz-slider-options="device.greenSlider.options"></rzslider>
+                <rzslider class="color-blue-area" rz-slider-model="device.blueSlider.value" rz-slider-options="device.blueSlider.options"></rzslider>
+            </div>
+			</div>
+            <!-- ac -->
+            <div ng-if="device.isAC">
+                <div class="ac-mode-area">
+                    מצב:
+                    <br>
+                    <select ng-model="device.ac.mode" ng-change="SetAC(device)">
+                        <option value=hot>חום </option>
+                        <option value=cold>קור </option>                      
+                    </select>
                 </div>
 
+                <div class="fan_strength-area">
+                    עצמת רוח:
+                    <br>
+                    <select ng-model="device.ac.fan_strength" ng-change="SetAC(device)">
+                        <option value=auto>אוטומטי</option>
+                        <option value=high>חזק </option>
+                        <option value=med>בינוני </option>
+                        <option value=low>חלש</option>
+                    </select>
+                </div>
 
-                <div class="submit_value" >
-                    <a class="btn btn-default btn-sm" ng-click="ShowDetails(device)">פרטים טכניים</a>
+                <div class="ac-temp-area">
+                    טמפרטורה:
+                    <br>
+                    <article>
+                        <rzslider rz-slider-model="device.acTempSlider.value" rz-slider-options="device.acTempSlider.options"></rzslider>
+                    </article>
                 </div>
             </div>
+
+            <!-- sending device values animation -->
+            <!-- Thanks for https://icons8.com/cssload/en/horizontal-bars -->
+            <div ng-if="device.sending" class="sending-animation-area">
+                <div id="spinningSquaresG">
+                    <div id="spinningSquaresG_1" class="spinningSquaresG"></div>
+                    <div id="spinningSquaresG_2" class="spinningSquaresG"></div>
+                    <div id="spinningSquaresG_3" class="spinningSquaresG"></div>
+                    <div id="spinningSquaresG_4" class="spinningSquaresG"></div>
+                    <div id="spinningSquaresG_5" class="spinningSquaresG"></div>
+                    <div id="spinningSquaresG_6" class="spinningSquaresG"></div>
+                    <div id="spinningSquaresG_7" class="spinningSquaresG"></div>
+                    <div id="spinningSquaresG_8" class="spinningSquaresG"></div>
+                </div>
+            </div>
+
+            <div class="submit_value">
+                <a class="btn btn-default btn-sm" ng-click="ShowDetails(device)">פרטים טכניים</a>
+            </div>
         </div>
-            <br>
-            <br>
-            <br>
-            <br>      
-            <a class="btn btn-default btn-lg " ng-click="GetDevices()">רענן נתונים</a>
-            <a class="btn btn-default btn-lg " ng-click="RefreshData()">סרוק מכשירים ברשת</a>
-            <a class="btn btn-default btn-lg " ng-click="FullScreen()">מסך מלא</a>
-        </div>
+        <br>
+        <br>
+        <br>
+        <br>      
+        <a class="btn btn-default btn-lg " ng-click="GetDevices()">רענן נתונים</a>
+        <a class="btn btn-default btn-lg " ng-click="RefreshData()">סרוק מכשירים ברשת</a>
+        <a class="btn btn-default btn-lg " ng-click="FullScreen()">מסך מלא</a>
     </div>
+</div>
