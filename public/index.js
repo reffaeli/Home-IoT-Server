@@ -46,7 +46,10 @@ IoTApp.controller('indexCtrl', function ($scope) {
     // For next use
 });
 
+
 IoTApp.controller('mainCtrl', function ($scope, $http, updatesService) {
+    $scope.noActionInc = 0
+
     $scope.onMouseUpCallbacks = [];
 
     $(document).ready(function () {
@@ -63,6 +66,24 @@ IoTApp.controller('mainCtrl', function ($scope, $http, updatesService) {
                 method();
             });
         }
+
+        document.body.ontouchstart = function () {
+            $scope.noActionInc = 0;
+            $('#fsModal').modal('hide');
+
+        }
+
+        document.body.onmousedown = function () {
+            $scope.noActionInc = 0;
+            $('#fsModal').modal('hide');
+
+        }
+        setInterval(() => {
+            $scope.noActionInc++;
+            if ($scope.noActionInc > 30) {// after 30 seconds of not tuching screnn
+                $('#fsModal').modal('show');
+            }
+        }, 1000)
     });
 
     $scope.CreateAcTempSlider = (device) => {
@@ -278,35 +299,37 @@ IoTApp.controller('mainCtrl', function ($scope, $http, updatesService) {
 
     $scope.devices = [];
 
+    $scope.updateDeviceProps = (device, deviceProps) => {
+        device.state = deviceProps.state;
+
+        if (device.isBrightness) {
+            device.bright = deviceProps.bright;
+            device.brightnessSlider.value = device.bright;
+        }
+
+        if (device.isWhiteTemp) {
+            device.white_temp = deviceProps.white_temp;
+            device.whiteTempSlider.value = device.white_temp;
+        }
+
+        if (device.isColor) {
+            device.light_color = deviceProps.light_color;
+            device.redSlider.value = device.light_color.red;
+            device.greenSlider.value = device.light_color.green;
+            device.blueSlider.value = device.light_color.blue;
+        }
+
+        if (device.isAC) {
+            device.ac = deviceProps.ac;
+            device.acTempSlider.value = device.ac.temp;
+        }
+
+    };
     // updates
     updatesService.GivCallbackToListen((data) => {
         $scope.devices.forEach((item, index) => {
             if (item.deviceID == data.deviceID) {
-
-                item.state = data.data.state;
-
-                if (item.isBrightness) {
-                    item.bright = data.data.bright;
-                    item.brightnessSlider.value = item.bright;
-                }
-
-                if (item.isWhiteTemp) {
-                    item.white_temp = data.data.white_temp;
-                    item.whiteTempSlider.value = item.white_temp;
-                }
-
-                if (item.isColor) {
-                    item.light_color = data.data.light_color;
-                    item.redSlider.value = item.light_color.red;
-                    item.greenSlider.value = item.light_color.green;
-                    item.blueSlider.value = item.light_color.blue;
-                }
-
-                if (item.isAC) {
-                    item.ac = data.data.ac;
-                    item.acTempSlider.value = item.ac.temp;
-                }
-
+                $scope.updateDeviceProps(item, data.data);
                 $scope.$apply();
             }
         })
@@ -320,6 +343,7 @@ IoTApp.controller('mainCtrl', function ($scope, $http, updatesService) {
             method: 'GET'
         })
             .then(function (response) {
+                $scope.loading = false;
                 console.log("get devices successfully");
                 Object.keys(response.data).forEach((key) => {
                     var device = response.data[key];
@@ -349,7 +373,6 @@ IoTApp.controller('mainCtrl', function ($scope, $http, updatesService) {
                     }
                     $scope.devices.push(device);
                 });
-                $scope.loading = false;
             },
             function (response) { // optional
                 $scope.loading = false;
@@ -358,6 +381,22 @@ IoTApp.controller('mainCtrl', function ($scope, $http, updatesService) {
     };
 
     $scope.GetDevices();
+
+    $scope.GetDevice = function (device) {
+        device.sending = true;
+        $http({
+            url: 'devices/' + device.deviceID,
+            method: 'GET'
+        })
+            .then(function (response) {
+                device.sending = false;
+                $scope.updateDeviceProps(device, response.data);                
+            },
+            function (response) { // optional
+                device.sending = false;
+                $scope.ErrorResponse(response);
+            });
+    };
 
     $scope.SetState = function (device) {
 
@@ -374,7 +413,7 @@ IoTApp.controller('mainCtrl', function ($scope, $http, updatesService) {
             },
             function (response) { // optional
                 device.sending = false;
-                $scope.ErrorResponse(response);
+                $scope.ErrorResponse(response, device);
             });
     };
 
@@ -391,14 +430,14 @@ IoTApp.controller('mainCtrl', function ($scope, $http, updatesService) {
             },
             function (response) {
                 device.sending = false;
-                $scope.ErrorResponse(response);
+                $scope.ErrorResponse(response, device);
             });
     }
 
-    $scope.ErrorResponse = (response) => {
+    $scope.ErrorResponse = (response, device) => {
 
-        if (response.status && response.status != 403 )
-            $scope.GetDevices();
+        if (response.status && response.status != 403 && device)
+            $scope.GetDevice(device);
         swal({
             title: "Error with requst action",
             text: response.status == 0 ? 'NO LAN CONNECTION' : response.data,
@@ -407,6 +446,7 @@ IoTApp.controller('mainCtrl', function ($scope, $http, updatesService) {
         });
         console.error(response.data);
     }
+
 
     $scope.SetAC = (device) => {
         device.sending = true;
@@ -421,7 +461,7 @@ IoTApp.controller('mainCtrl', function ($scope, $http, updatesService) {
             },
             function (response) { // optional
                 device.sending = false;
-                $scope.ErrorResponse(response);
+                $scope.ErrorResponse(response, device);
             });
 
     }
