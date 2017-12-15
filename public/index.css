@@ -752,6 +752,93 @@ input[type='checkbox']:checked ~ .switch {
     text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
     text-indent: .3em;
   }
+
+  .sunrise-title {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    line-height: 560px;
+    text-align: center;
+    /* -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0); */
+    color: white;
+    /* text-transform: uppercase; */
+    font-family: 'Josefin Sans', sans-serif;
+    /* letter-spacing: .4em; */
+    font-size: 15px;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
+    text-indent: .3em;
+  }
+
+  .sunset-title {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    line-height: 610px;
+    text-align: center;
+    /* -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0); */
+    color: white;
+    /* text-transform: uppercase; */
+    font-family: 'Josefin Sans', sans-serif;
+    /* letter-spacing: .4em; */
+    font-size: 15px;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
+    text-indent: .3em;
+  }
+
+  .description-weather {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    line-height: 710px;
+    text-align: center;
+    /* -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0); */
+    color: white;
+    /* text-transform: uppercase; */
+    font-family: 'Josefin Sans', sans-serif;
+    /* letter-spacing: .4em; */
+    font-size: 15px;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
+    text-indent: .3em;
+  }
+
+  .celcius-weather {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    line-height: 825px;
+    text-align: center;
+    /* -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0); */
+    color: white;
+    /* text-transform: uppercase; */
+    font-family: 'Josefin Sans', sans-serif;
+    /* letter-spacing: .4em; */
+    font-size: 15px;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
+    text-indent: .3em;
+  }
+  .icon-weather {
+    position: absolute;
+    left: 43%;
+    top: 61%;
+    z-index: 1;
+    /* line-height: 0px; */
+    text-align: center;
+    width :50px;
+    height :50px;
+  
+  }
   @-webkit-keyframes drift {
     from {
       -webkit-transform: rotate(0deg);

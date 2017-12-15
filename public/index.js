@@ -42,8 +42,35 @@ IoTApp.service('updatesService', ['$http', function (http) {
 }]);
 
 // Controller defnition
-IoTApp.controller('indexCtrl', function ($scope) {
-    // For next use
+IoTApp.controller('indexCtrl', function ($scope, $http) {
+
+    $scope.GetWeather = function (device) {
+        $http({
+            url: 'http://api.openweathermap.org/data/2.5/weather?id=293845&units=metric&appid=b4307327514f6f9aa8e28ab0e65a930b',
+            method: 'GET'
+        })
+            .then(function (response) {
+                var sunrise = new Date(response.data.sys.sunrise*1000); 
+                var sunset = new Date(response.data.sys.sunset*1000); 
+                if(document.getElementById("sunrise-title")){
+                    document.getElementById("sunrise-title").innerHTML = 'זריחה: ' + sunrise.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                    document.getElementById("sunset-title").innerHTML = 'שקיעה: ' + sunset.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                    document.getElementById("celcius-weather").innerHTML = '<b>' + response.data.main.temp + '°</b>'; 
+                    document.getElementById("description-weather").innerHTML = response.data.weather[0].description;
+                    ;
+                    
+                    $("#icon-weather").attr("src","http://openweathermap.org/img/w/" + response.data.weather[0].icon + ".png");
+                }
+
+                // set icon image
+            },
+            function (response) { // optional
+                console.error(response.data);
+            });
+    };
+
+    setInterval($scope.GetWeather, 300000);// loading data every 5 minuts
+    setTimeout($scope.GetWeather, 5000);
 });
 
 
@@ -60,8 +87,8 @@ IoTApp.controller('mainCtrl', function ($scope, $http, updatesService) {
         var isMobile = window.matchMedia("only screen and (max-width: 760px)");
 
         if (isMobile.matches) {
-            $scope.useScreensaver = true;   
-            $("#screensaver-tuggel").addClass("active");         
+            $scope.useScreensaver = true;
+            $("#screensaver-tuggel").addClass("active");
         }
 
         document.body.ontouchend = function () {
@@ -109,7 +136,7 @@ IoTApp.controller('mainCtrl', function ($scope, $http, updatesService) {
     $scope.ShowScreensaver = () => {
         if (!$scope.useScreensaver)
             return;
-        useScreensaver
+        
         $('#fsModal').modal('show');
         $scope.isScreeensaverOn = true;
     };

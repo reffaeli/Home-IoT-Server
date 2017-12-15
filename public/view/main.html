@@ -16,6 +16,12 @@
                         <div class='title' id="title">Timer</div>
                         <div class='date-title' id="date-title">Date</div>
                         <div class='day-title' id="day-title">Day</div>
+                        <div class='temp-icon-and-numbee-title' id="day-title">Weather</div>
+                        <div class='sunrise-title' id="sunrise-title"></div>
+                        <div class='sunset-title' id="sunset-title"></div>
+                        <div class='description-weather' id="description-weather"></div>
+                        <div class='celcius-weather' id="celcius-weather"></div>
+                        <img class='icon-weather' id='icon-weather'  alt="Weather icon">
                     </div>
                     <script>
                         //var daysInWeek = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
@@ -44,7 +50,7 @@
                             // console.log(x2);
                             var x3 = document.getElementById("wavethree").style.top;
                         }
-                        setInterval(timer, 800);
+                        setInterval(timer, 1000);
                     </script>
                 </bodyc>
                 </htmlc>
@@ -169,12 +175,15 @@
         <a class="btn btn-default btn-lg " ng-click="RefreshData()">סרוק מכשירים ברשת</a>
         <a class="btn btn-default btn-lg " ng-click="FullScreen()">מסך מלא</a>
 		<a ng-if="useScreensaver" class="btn btn-default btn-lg " ng-click="ShowScreensaver()">שומר מסך</a>
-    
+    <br>
+	<br>
 		<b>הפעל שומר מסך:</b>
 		<!-- thanks for https://codepen.io/aanjulena/pen/ZLZjzV?editors=1000 -->
 		<button id="screensaver-tuggel" type="button" class="btn btn-lg btn-toggle" data-toggle="button" aria-pressed="{{useScreensaver}}" autocomplete="{{useScreensaver ? 'off' : 'on'}}"
 				ng-click="useScreensaver = (useScreensaver == true ? false : true)">
 			<div class="handle"></div>
 		</button>
+		<br>
+		<br>
 	</div>
 </div>
