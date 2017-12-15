@@ -1,6 +1,7 @@
 <div>
     <!-- modal -->
-    <div id="fsModal" class="modal animated bounceIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div ng-show="useScreensaver" id="fsModal" class="modal animated bounceIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
         <!-- dialog -->
         <div class="modal-dialog">
             <!-- content -->
@@ -167,6 +168,13 @@
         <a class="btn btn-default btn-lg " ng-click="GetDevices()">רענן נתונים</a>
         <a class="btn btn-default btn-lg " ng-click="RefreshData()">סרוק מכשירים ברשת</a>
         <a class="btn btn-default btn-lg " ng-click="FullScreen()">מסך מלא</a>
-		 <a class="btn btn-default btn-lg " ng-click="ShowScreensaver()">שומר מסך</a>
-    </div>
+		<a ng-if="useScreensaver" class="btn btn-default btn-lg " ng-click="ShowScreensaver()">שומר מסך</a>
+    
+		<b>הפעל שומר מסך:</b>
+		<!-- thanks for https://codepen.io/aanjulena/pen/ZLZjzV?editors=1000 -->
+		<button id="screensaver-tuggel" type="button" class="btn btn-lg btn-toggle" data-toggle="button" aria-pressed="{{useScreensaver}}" autocomplete="{{useScreensaver ? 'off' : 'on'}}"
+				ng-click="useScreensaver = (useScreensaver == true ? false : true)">
+			<div class="handle"></div>
+		</button>
+	</div>
 </div>
