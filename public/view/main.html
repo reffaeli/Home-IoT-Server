@@ -2,14 +2,16 @@
     <!-- modal -->
     <div ng-controller="screensaverCtrl" id="fsModal" class="modal screensaver" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true" ng-style="{'background-image':'url(/static/screensaver/wallpaper/'+ backgroundImageName +')'}">
-                        <div class='title screensaver-element' id="title">{{clock}}</div>
-                        <div class='date-title screensaver-element' id="date-title">{{date}}</div>
-                        <div class='day-title screensaver-element' id="day-title">{{day}}</div>
-                        <div class='sunrise-title screensaver-element' id="sunrise-title">זריחה: {{sunrise}}</div>
-                        <div class='sunset-title screensaver-element' id="sunset-title">שקיעה: {{sunset}}</div>
-                        <div class='description-weather screensaver-element' id="description-weather">{{waetherDesc}}</div>
-                        <div class='celcius-weather screensaver-element' id="celcius-weather"><b>{{weatherTemp}}°</b></div>
-                        <img ng-src="{{waetherIconPath}}" class='icon-weather screensaver-element' id='icon-weather'  alt="Weather icon">
+        <div class='title screensaver-element' id="title">{{clock}}</div>
+        <div class='date-title screensaver-element' id="date-title">{{date}}</div>
+        <div class='day-title screensaver-element' id="day-title">{{day}}</div>
+        <div class='sunrise-title screensaver-element' id="sunrise-title">זריחה: {{sunrise}}</div>
+        <div class='sunset-title screensaver-element' id="sunset-title">שקיעה: {{sunset}}</div>
+        <div class='description-weather screensaver-element' id="description-weather">{{waetherDesc}}</div>
+        <div class='celcius-weather screensaver-element' id="celcius-weather">
+            <b>{{weatherTemp}}°</b>
+        </div>
+        <img ng-src="{{waetherIconPath}}" class='icon-weather screensaver-element' id='icon-weather' alt="Weather icon">
     </div>
     <!-- modal -->
     <div class=container>
@@ -28,51 +30,53 @@
             <div class="cssload-shaft9"></div>
             <div class="cssload-shaft10"></div>
         </div>
-		
-            <div ng-repeat="device in devices | orderBy : 'typeName' " class="card card-5 " 
-                 ng-class="GetDeviceClass(device)">
-                <h2 class=device-name>{{device.name}}</h2>
 
-				<!-- Thanks to https://codepen.io/aanjulena/pen/ZLZjzV?editors=1000 -->
-				<div>
-					<div class="switch-area">
-						<button type="button" class="btn btn-lg btn-secondary btn-toggle " ng-class="device.state == 'on' ? 'active' : ''" ng-click="SetState(device)">
-							<div class="handle"></div>
-						</button>
-					</div>
-				</div>
-			
-                <!-- brightness -->
-                <div ng-if="device.isBrightness">
-                    <div class="brightness-area">
-                        בהירות:
-                        <br>
-                        <article>
-                            <rzslider rz-slider-model="device.brightnessSlider.value" rz-slider-options="device.brightnessSlider.options"></rzslider>
-                        </article>
-                    </div>
-                </div>
+        <div ng-repeat="device in devices | orderBy : 'typeName' " class="card card-5 " ng-class="GetDeviceClass(device)">
+            <h2 class=device-name>{{device.name}}</h2>
 
-                <!-- white temp -->
-                <div ng-if="device.isWhiteTemp">
-                    <div class="white-color-area">
-                        טמפרטורת תאורה:
-                        <br>
-                        <article>
-                            <rzslider rz-slider-model="device.whiteTempSlider.value" rz-slider-options="device.whiteTempSlider.options"></rzslider>
-                        </article>
+            <!-- Thanks to https://codepen.io/aanjulena/pen/ZLZjzV?editors=1000 -->
+            <div>
+                <div class="switch-area">
+                    <div ng-if="device.state == 'error'" style="color: red">
+                        שגיאה במכשיר
                     </div>
+                    <button type="button" class="btn btn-lg btn-secondary btn-toggle " ng-class="device.state == 'on' ? 'active' : ''" ng-click="SetState(device)">
+                        <div class="handle"></div>
+                    </button>
                 </div>
+            </div>
+
+            <!-- brightness -->
+            <div ng-if="device.isBrightness">
+                <div class="brightness-area">
+                    בהירות:
+                    <br>
+                    <article>
+                        <rzslider rz-slider-model="device.brightnessSlider.value" rz-slider-options="device.brightnessSlider.options"></rzslider>
+                    </article>
+                </div>
+            </div>
+
+            <!-- white temp -->
+            <div ng-if="device.isWhiteTemp">
+                <div class="white-color-area">
+                    טמפרטורת תאורה:
+                    <br>
+                    <article>
+                        <rzslider rz-slider-model="device.whiteTempSlider.value" rz-slider-options="device.whiteTempSlider.options"></rzslider>
+                    </article>
+                </div>
+            </div>
 
 
             <!-- color -->
             <div ng-if="device.isColor">
-            <div class="color-area">
-                <rzslider class="color-red-area" rz-slider-model="device.redSlider.value" rz-slider-options="device.redSlider.options"></rzslider>
-                <rzslider class="color-green-area" rz-slider-model="device.greenSlider.value" rz-slider-options="device.greenSlider.options"></rzslider>
-                <rzslider class="color-blue-area" rz-slider-model="device.blueSlider.value" rz-slider-options="device.blueSlider.options"></rzslider>
+                <div class="color-area">
+                    <rzslider class="color-red-area" rz-slider-model="device.redSlider.value" rz-slider-options="device.redSlider.options"></rzslider>
+                    <rzslider class="color-green-area" rz-slider-model="device.greenSlider.value" rz-slider-options="device.greenSlider.options"></rzslider>
+                    <rzslider class="color-blue-area" rz-slider-model="device.blueSlider.value" rz-slider-options="device.blueSlider.options"></rzslider>
+                </div>
             </div>
-			</div>
             <!-- ac -->
             <div ng-if="device.isAC">
                 <div class="ac-mode-area">
@@ -80,7 +84,7 @@
                     <br>
                     <select ng-model="device.ac.mode" ng-change="SetAC(device)">
                         <option value=hot>חום </option>
-                        <option value=cold>קור </option>                      
+                        <option value=cold>קור </option>
                     </select>
                 </div>
 
@@ -126,20 +130,20 @@
         <br>
         <br>
         <br>
-        <br>      
+        <br>
         <a class="btn btn-default btn-lg " ng-click="GetDevices()">רענן נתונים</a>
         <a class="btn btn-default btn-lg " ng-click="RefreshData()">סרוק מכשירים ברשת</a>
         <a class="btn btn-default btn-lg " ng-click="FullScreen()">מסך מלא</a>
-		<a ng-if="useScreensaver" class="btn btn-default btn-lg " ng-click="ShowScreensaver()">שומר מסך</a>
-    <br>
-	<br>
-		<b>הפעל שומר מסך:</b>
-		<!-- thanks for https://codepen.io/aanjulena/pen/ZLZjzV?editors=1000 -->
-		<button id="screensaver-tuggel" type="button" class="btn btn-lg btn-toggle" data-toggle="button" aria-pressed="{{useScreensaver}}" autocomplete="{{useScreensaver ? 'off' : 'on'}}"
-				ng-click="useScreensaver = (useScreensaver == true ? false : true)">
-			<div class="handle"></div>
-		</button>
-		<br>
-		<br>
-	</div>
+        <a ng-if="useScreensaver" class="btn btn-default btn-lg " ng-click="ShowScreensaver()">שומר מסך</a>
+        <br>
+        <br>
+        <b>הפעל שומר מסך:</b>
+        <!-- thanks for https://codepen.io/aanjulena/pen/ZLZjzV?editors=1000 -->
+        <button id="screensaver-tuggel" type="button" class="btn btn-lg btn-toggle" data-toggle="button" aria-pressed="{{useScreensaver}}"
+            autocomplete="{{useScreensaver ? 'off' : 'on'}}" ng-click="useScreensaver = (useScreensaver == true ? false : true)">
+            <div class="handle"></div>
+        </button>
+        <br>
+        <br>
+    </div>
 </div>
