@@ -101,15 +101,11 @@ IoTApp.controller('screensaverCtrl', function ($scope, $http) {
 });
 
 IoTApp.controller('mainCtrl', function ($scope, $http, updatesService) {
-    $scope.noActionInc = 0
-
     $scope.onMouseUpCallbacks = [];
-
-    $scope.isScreeensaverOn = false;
-    $scope.useScreensaver = false;
 
     $(document).ready(function () {
 
+<<<<<<< HEAD
         var isMobile = window.matchMedia("only screen and (max-width: 760px)");
 
         if (isMobile.matches) {
@@ -117,6 +113,8 @@ IoTApp.controller('mainCtrl', function ($scope, $http, updatesService) {
             $("#screensaver-tuggel").addClass("active");
         }
 
+=======
+>>>>>>> master
         document.body.ontouchend = function () {
             $scope.onMouseUpCallbacks.forEach((method) => {
                 method();
@@ -128,37 +126,9 @@ IoTApp.controller('mainCtrl', function ($scope, $http, updatesService) {
                 method();
             });
         }
-
-        document.body.ontouchstart = function () {
-            if (!$scope.useScreensaver)
-                return;
-            $scope.noActionInc = 0;
-            if ($scope.isScreeensaverOn) {
-                $scope.isScreeensaverOn = false;
-                $('#fsModal').modal('hide');
-            }
-        }
-
-        document.body.onmousedown = function () {
-            if (!$scope.useScreensaver)
-                return;
-            $scope.noActionInc = 0;
-            if ($scope.isScreeensaverOn) {
-                $scope.isScreeensaverOn = false;
-                $('#fsModal').modal('hide');
-            }
-        }
-        setInterval(() => {
-            if (!$scope.useScreensaver)
-                return;
-            $scope.noActionInc++;
-            if ($scope.isScreeensaverOn == false && $scope.noActionInc > 30) {// after 30 seconds of not tuching screnn
-                $('#fsModal').modal('show');
-                $scope.isScreeensaverOn = true;
-            }
-        }, 1000)
     });
 
+<<<<<<< HEAD
     $scope.ShowScreensaver = () => {
         if (!$scope.useScreensaver)
             return;
@@ -167,6 +137,8 @@ IoTApp.controller('mainCtrl', function ($scope, $http, updatesService) {
         $scope.isScreeensaverOn = true;
     };
 
+=======
+>>>>>>> master
     $scope.CreateAcTempSlider = (device) => {
         device.acTempSlider = {
             value: device.ac.temp,

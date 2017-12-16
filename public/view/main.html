@@ -1,4 +1,5 @@
 <div>
+<<<<<<< HEAD
     <!-- modal -->
     <div ng-controller="screensaverCtrl" id="fsModal" class="modal screensaver" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true" ng-style="{'background-image':'url(/static/screensaver/wallpaper/'+ backgroundImageName +')'}">
@@ -12,8 +13,9 @@
                         <img ng-src="{{waetherIconPath}}" class='icon-weather screensaver-element' id='icon-weather'  alt="Weather icon">
     </div>
     <!-- modal -->
+=======
+>>>>>>> master
     <div class=container>
-
         <!-- Loading animation -->
         <!-- Thanks for https://icons8.com/cssload/en/spinners/5 -->
         <div ng-if="loading" class="cssload-container">
@@ -121,6 +123,7 @@
                 <a class="btn btn-default btn-sm" ng-click="ShowDetails(device)">פרטים טכניים</a>
             </div>
         </div>
+<<<<<<< HEAD
         <br>
         <br>
         <br>
@@ -140,4 +143,13 @@
 		<br>
 		<br>
 	</div>
+=======
+    </div>
+    <br>
+    <br>
+    <br>
+    <a class="btn btn-default btn-lg " ng-click="GetDevices()">Refresh data</a>
+    <a class="btn btn-default btn-lg " ng-click="RefreshData()">Rescan lan devices</a>
+    <a class="btn btn-default btn-lg " ng-click="FullScreen()">Set FullScreen</a>
+>>>>>>> master
 </div>
