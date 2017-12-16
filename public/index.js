@@ -42,7 +42,20 @@ IoTApp.service('updatesService', ['$http', function (http) {
 }]);
 
 // Controller defnition
-IoTApp.controller('indexCtrl', function ($scope, $http) {
+IoTApp.controller('indexCtrl', function ($scope) {
+    // For next use
+});
+
+IoTApp.controller('screensaverCtrl', function ($scope, $http) {
+    $scope.clock;
+    $scope.date;
+    $scope.day;
+    $scope.sunrise;
+    $scope.sunset;
+    $scope.weatherTemp;
+    $scope.waetherIconPath;
+    $scope.waetherDesc;
+    $scope.backgroundImageName = 'walla.png';
 
     $scope.GetWeather = function (device) {
         $http({
@@ -50,29 +63,42 @@ IoTApp.controller('indexCtrl', function ($scope, $http) {
             method: 'GET'
         })
             .then(function (response) {
-                var sunrise = new Date(response.data.sys.sunrise*1000); 
-                var sunset = new Date(response.data.sys.sunset*1000); 
-                if(document.getElementById("sunrise-title")){
-                    document.getElementById("sunrise-title").innerHTML = 'זריחה: ' + sunrise.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                    document.getElementById("sunset-title").innerHTML = 'שקיעה: ' + sunset.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                    document.getElementById("celcius-weather").innerHTML = '<b>' + response.data.main.temp + '°</b>'; 
-                    document.getElementById("description-weather").innerHTML = response.data.weather[0].description;
-                    ;
-                    
-                    $("#icon-weather").attr("src","http://openweathermap.org/img/w/" + response.data.weather[0].icon + ".png");
-                }
-
-                // set icon image
+                var sunrise = new Date(response.data.sys.sunrise * 1000);
+                var sunset = new Date(response.data.sys.sunset * 1000);
+                $scope.sunrise = sunrise.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                $scope.sunset = sunset.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                $scope.weatherTemp = response.data.main.temp;// + '°';
+                $scope.waetherDesc = response.data.weather[0].description;
+                $scope.waetherIconPath = "http://openweathermap.org/img/w/" + response.data.weather[0].icon + ".png";
             },
             function (response) { // optional
                 console.error(response.data);
             });
     };
 
-    setInterval($scope.GetWeather, 300000);// loading data every 5 minuts
+    setInterval($scope.GetWeather, 150000);// loading data every 5 minuts
     setTimeout($scope.GetWeather, 5000);
-});
 
+    $scope.daysInWeek = ['יום ראשון', 'יום שני', 'יום שלישי', 'יום רביעי', 'יום חמישי', 'יום שישי', 'שבת קודש', 'מוצאי שבת קודש'];
+
+    $scope.clockInterval = () => {
+        var d = new Date();
+        min = d.getMinutes();
+        sec = d.getSeconds();
+        hr = d.getHours();
+        if (hr < 10)
+            hr = "0" + hr;
+        if (d.getMinutes() < 10)
+            min = "0" + d.getMinutes();
+        if (d.getSeconds() < 10)
+            sec = "0" + d.getSeconds();
+        $scope.clock = "" + hr + ":" + min + ":" + sec;
+        $scope.date = d.toLocaleDateString();
+        $scope.day = $scope.daysInWeek[d.getDay()];
+        $scope.$apply();
+    }
+    setInterval($scope.clockInterval, 1000);
+});
 
 IoTApp.controller('mainCtrl', function ($scope, $http, updatesService) {
     $scope.noActionInc = 0
@@ -136,7 +162,7 @@ IoTApp.controller('mainCtrl', function ($scope, $http, updatesService) {
     $scope.ShowScreensaver = () => {
         if (!$scope.useScreensaver)
             return;
-        
+
         $('#fsModal').modal('show');
         $scope.isScreeensaverOn = true;
     };

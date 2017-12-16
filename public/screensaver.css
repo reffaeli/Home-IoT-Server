@@ -1,0 +1,98 @@
+@font-face {
+    font-family: hebrewFont;
+    src: url('../static/screensaver/VarelaRound-Regular.woff');
+}
+ 
+.screensaver{
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.screensaver-element {
+    position:fixed;
+    left:50%;
+    transform:translate(-50%,-50%);
+    z-index: 1;
+
+    text-align: center;
+
+    color: white;
+    text-transform: uppercase;
+    font-family: hebrewFont;
+}
+
+.title {
+    top:23%;
+
+    letter-spacing: .4em;
+    font-size: 42px;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
+    text-indent: .3em;
+  }
+  
+  .date-title {
+    top:32%;
+
+    letter-spacing: .4em;
+    font-size: 22px;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
+    text-indent: .3em;
+  }
+
+  .day-title {
+    top:38%;
+
+    font-size: 22px;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
+    text-indent: .3em;
+  }
+
+  .sunrise-title {
+    top:48%;
+
+    font-size: 15px;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
+    text-indent: .3em;
+  }
+
+  .sunset-title {
+    top:52%;
+
+    font-size: 15px;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
+    text-indent: .3em;
+  }
+
+  .description-weather {
+    top:76%;
+
+    font-size: 15px;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
+    text-indent: .3em;
+  }
+
+  .celcius-weather {
+    top:71%;
+
+    
+    font-size: 15px;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
+    text-indent: .3em;
+  }
+  .icon-weather {
+    top: 66%;
+    
+    width :70px;
+    height :70px;
+  }
+
+
+ /* model - screensaver */
+  .modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+  }

@@ -1,61 +1,15 @@
 <div>
     <!-- modal -->
-    <div ng-show="useScreensaver" id="fsModal" class="modal animated bounceIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
-        <!-- dialog -->
-        <div class="modal-dialog">
-            <!-- content -->
-            <div class="modal-content">
-                <!-- thanks to https://codepen.io/akhil_001/pen/RGmqZB -->
-                <htmlc>
-                <bodyc>
-                    <div class='box'>
-                        <div class="wave" id='waveone' style="margin-top:-10%;"></div>
-                        <div class="wave" id='wavetwo' style="margin-top:-10%;"></div>
-                        <div class="wave" id='wavethree' style="margin-top:-10%;"></div>
-                        <div class='title' id="title">Timer</div>
-                        <div class='date-title' id="date-title">Date</div>
-                        <div class='day-title' id="day-title">Day</div>
-                        <div class='temp-icon-and-numbee-title' id="day-title">Weather</div>
-                        <div class='sunrise-title' id="sunrise-title"></div>
-                        <div class='sunset-title' id="sunset-title"></div>
-                        <div class='description-weather' id="description-weather"></div>
-                        <div class='celcius-weather' id="celcius-weather"></div>
-                        <img class='icon-weather' id='icon-weather'  alt="Weather icon">
-                    </div>
-                    <script>
-                        //var daysInWeek = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-                        var daysInWeek = ['יום ראשון','יום שני','יום שלישי','יום רביעי','יום חמישי','יום שישי','שבת קודש'];
-                        timer();
-                        function timer() {
-                            var d = new Date();
-                            min = d.getMinutes();
-                            sec = d.getSeconds();
-                            hr = d.getHours();
-                            if (hr < 10)
-                                hr = "0" + hr;
-                            if (d.getMinutes() < 10)
-                                min = "0" + d.getMinutes();
-                            if (d.getSeconds() < 10)
-                                sec = "0" + d.getSeconds();
-                            document.getElementById("title").innerHTML = "" + hr + ":" + min + ":" + sec;
-                            document.getElementById("date-title").innerHTML = d.toLocaleDateString();
-                            document.getElementById("day-title").innerHTML = daysInWeek[d.getDay()];
-
-                            document.getElementById("wavethree").style.marginTop = "-" + (d.getSeconds() + 2) * 2.5 + "%";
-                            document.getElementById("wavetwo").style.marginTop = "-" + (d.getMinutes() + 2) * 2.4 + "%";
-                            document.getElementById("waveone").style.marginTop = "-" + (d.getHours() + 2) * 2.3 + "%";
-
-                            var x2 = document.getElementById("wavethree").style.marginTop;
-                            // console.log(x2);
-                            var x3 = document.getElementById("wavethree").style.top;
-                        }
-                        setInterval(timer, 1000);
-                    </script>
-                </bodyc>
-                </htmlc>
-            </div>
-        </div>
+    <div ng-controller="screensaverCtrl" id="fsModal" class="modal screensaver" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true" ng-style="{'background-image':'url(/static/screensaver/wallpaper/'+ backgroundImageName +')'}">
+                        <div class='title screensaver-element' id="title">{{clock}}</div>
+                        <div class='date-title screensaver-element' id="date-title">{{date}}</div>
+                        <div class='day-title screensaver-element' id="day-title">{{day}}</div>
+                        <div class='sunrise-title screensaver-element' id="sunrise-title">זריחה: {{sunrise}}</div>
+                        <div class='sunset-title screensaver-element' id="sunset-title">שקיעה: {{sunset}}</div>
+                        <div class='description-weather screensaver-element' id="description-weather">{{waetherDesc}}</div>
+                        <div class='celcius-weather screensaver-element' id="celcius-weather"><b>{{weatherTemp}}°</b></div>
+                        <img ng-src="{{waetherIconPath}}" class='icon-weather screensaver-element' id='icon-weather'  alt="Weather icon">
     </div>
     <!-- modal -->
     <div class=container>
