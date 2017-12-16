@@ -1,155 +1,107 @@
-<div>
-<<<<<<< HEAD
-    <!-- modal -->
-    <div ng-controller="screensaverCtrl" id="fsModal" class="modal screensaver" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true" ng-style="{'background-image':'url(/static/screensaver/wallpaper/'+ backgroundImageName +')'}">
-                        <div class='title screensaver-element' id="title">{{clock}}</div>
-                        <div class='date-title screensaver-element' id="date-title">{{date}}</div>
-                        <div class='day-title screensaver-element' id="day-title">{{day}}</div>
-                        <div class='sunrise-title screensaver-element' id="sunrise-title">זריחה: {{sunrise}}</div>
-                        <div class='sunset-title screensaver-element' id="sunset-title">שקיעה: {{sunset}}</div>
-                        <div class='description-weather screensaver-element' id="description-weather">{{waetherDesc}}</div>
-                        <div class='celcius-weather screensaver-element' id="celcius-weather"><b>{{weatherTemp}}°</b></div>
-                        <img ng-src="{{waetherIconPath}}" class='icon-weather screensaver-element' id='icon-weather'  alt="Weather icon">
-    </div>
-    <!-- modal -->
-=======
->>>>>>> master
-    <div class=container>
-        <!-- Loading animation -->
-        <!-- Thanks for https://icons8.com/cssload/en/spinners/5 -->
-        <div ng-if="loading" class="cssload-container">
-            <div class="cssload-shaft1"></div>
-            <div class="cssload-shaft2"></div>
-            <div class="cssload-shaft3"></div>
-            <div class="cssload-shaft4"></div>
-            <div class="cssload-shaft5"></div>
-            <div class="cssload-shaft6"></div>
-            <div class="cssload-shaft7"></div>
-            <div class="cssload-shaft8"></div>
-            <div class="cssload-shaft9"></div>
-            <div class="cssload-shaft10"></div>
-        </div>
-		
-            <div ng-repeat="device in devices | orderBy : 'typeName' " class="card card-5 " 
-                 ng-class="GetDeviceClass(device)">
-                <h2 class=device-name>{{device.name}}</h2>
+<!DOCTYPE html>
+<html>
 
-                <label for="switch{{device.deviceID}}">
-                    <input type="checkbox" ng-checked="device.state == 'on'" ng-click="SetState(device)" id="switch{{device.deviceID}}" />
-                    <span class="switch">
-                    </span>
-                    <span ng-class="device.state == 'error' ? 'disable' : ''" class="toggle">
-                    </span>
-                </label>
-                <!-- brightness -->
-                <div ng-if="device.isBrightness">
-                    <div class="brightness-area">
-                        בהירות:
-                        <br>
-                        <article>
-                            <rzslider rz-slider-model="device.brightnessSlider.value" rz-slider-options="device.brightnessSlider.options"></rzslider>
-                        </article>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home IoT Server</title>
+
+    <!--jquery-->
+
+    <script src="static/libs/jquery.min.js"></script>
+
+    <!-- angular -->
+    <script src="static/libs/angular.min.js"></script>
+    <script src="static/libs/angular-route.min.js"></script>
+
+    <!--bootstrap-->
+    <link rel="stylesheet" href="static/libs/bootstrap.min.css">
+    <link rel="stylesheet" href="static/libs/bootstrap-theme.min.css">
+    <script src="static/libs/bootstrap.min.js"></script>
+
+	<!-- Load Bootstrap RTL theme from RawGit -->
+	<!--<link rel="stylesheet" href="static/libs/bootstrap-rtl.min.css">-->
+	
+	
+    <!--sweet alert -->
+    <link rel="stylesheet" href="static/libs/sweetalert.min.css">
+    <script src="static/libs/sweetalert.min.js"></script>
+
+    <!-- range angular -->
+    <link rel="stylesheet" href="static/libs/rzslider.css"/>
+    <script src="static/libs/ui-bootstrap-tpls.js"></script>
+    <script src="static/libs/rzslider.js"></script>
+
+    <!-- app css-->
+    <link rel="stylesheet" href="static/index.css">
+    <link rel="stylesheet" href="static/btns.css">
+    <link rel="stylesheet" href="static/screensaver.css">
+
+    <!-- app js-->
+    <script type="text/javascript" src="static/index.js"></script>
+
+</head>
+
+<!--app-->
+
+<body ng-app="IoTApp">
+    <!--container-->
+    <div class="container">
+        <div ng-controller="indexCtrl">
+            <!--app navbar menu-->
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <a class="active navbar-brand" href="#/" style="color: #fff;">
+                            <strong>Home IoT Server</strong>
+                        </a>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-navbar-collapse" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <!-- app navbar menu options -->
+                    <div class="collapse navbar-collapse" id="menu-navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a titel=Main href="#main">תצוגה ראשית
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a titel=Actions href="#actions">פעולות
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a title="Timings" href=#timings>תזמונים
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a titel=Login href="#login">התחברות
+                                        <span class="sr-only">(current)</span>
+                                </a>
+                            <li>
+                                <a titel=Logs href="#logs">לוגים
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a title="About" href=#about>אודות
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-
-                <!-- white temp -->
-                <div ng-if="device.isWhiteTemp">
-                    <div class="white-color-area">
-                        טמפרטורת תאורה:
-                        <br>
-                        <article>
-                            <rzslider rz-slider-model="device.whiteTempSlider.value" rz-slider-options="device.whiteTempSlider.options"></rzslider>
-                        </article>
-                    </div>
-                </div>
-
-
-            <!-- color -->
-            <div ng-if="device.isColor">
-            <div class="color-area">
-                <rzslider class="color-red-area" rz-slider-model="device.redSlider.value" rz-slider-options="device.redSlider.options"></rzslider>
-                <rzslider class="color-green-area" rz-slider-model="device.greenSlider.value" rz-slider-options="device.greenSlider.options"></rzslider>
-                <rzslider class="color-blue-area" rz-slider-model="device.blueSlider.value" rz-slider-options="device.blueSlider.options"></rzslider>
-            </div>
-			</div>
-            <!-- ac -->
-            <div ng-if="device.isAC">
-                <div class="ac-mode-area">
-                    מצב:
-                    <br>
-                    <select ng-model="device.ac.mode" ng-change="SetAC(device)">
-                        <option value=hot>חום </option>
-                        <option value=cold>קור </option>                      
-                    </select>
-                </div>
-
-                <div class="fan_strength-area">
-                    עצמת רוח:
-                    <br>
-                    <select ng-model="device.ac.fan_strength" ng-change="SetAC(device)">
-                        <option value=auto>אוטומטי</option>
-                        <option value=high>חזק </option>
-                        <option value=med>בינוני </option>
-                        <option value=low>חלש</option>
-                    </select>
-                </div>
-
-                <div class="ac-temp-area">
-                    טמפרטורה:
-                    <br>
-                    <article>
-                        <rzslider rz-slider-model="device.acTempSlider.value" rz-slider-options="device.acTempSlider.options"></rzslider>
-                    </article>
-                </div>
-            </div>
-
-            <!-- sending device values animation -->
-            <!-- Thanks for https://icons8.com/cssload/en/horizontal-bars -->
-            <div ng-if="device.sending" class="sending-animation-area">
-                <div id="spinningSquaresG">
-                    <div id="spinningSquaresG_1" class="spinningSquaresG"></div>
-                    <div id="spinningSquaresG_2" class="spinningSquaresG"></div>
-                    <div id="spinningSquaresG_3" class="spinningSquaresG"></div>
-                    <div id="spinningSquaresG_4" class="spinningSquaresG"></div>
-                    <div id="spinningSquaresG_5" class="spinningSquaresG"></div>
-                    <div id="spinningSquaresG_6" class="spinningSquaresG"></div>
-                    <div id="spinningSquaresG_7" class="spinningSquaresG"></div>
-                    <div id="spinningSquaresG_8" class="spinningSquaresG"></div>
-                </div>
-            </div>
-
-            <div class="submit_value">
-                <a class="btn btn-default btn-sm" ng-click="ShowDetails(device)">פרטים טכניים</a>
-            </div>
+            </nav>
+            <!--all view of app is here-->
+            <ng-view/>
         </div>
-<<<<<<< HEAD
-        <br>
-        <br>
-        <br>
-        <br>      
-        <a class="btn btn-default btn-lg " ng-click="GetDevices()">רענן נתונים</a>
-        <a class="btn btn-default btn-lg " ng-click="RefreshData()">סרוק מכשירים ברשת</a>
-        <a class="btn btn-default btn-lg " ng-click="FullScreen()">מסך מלא</a>
-		<a ng-if="useScreensaver" class="btn btn-default btn-lg " ng-click="ShowScreensaver()">שומר מסך</a>
-    <br>
-	<br>
-		<b>הפעל שומר מסך:</b>
-		<!-- thanks for https://codepen.io/aanjulena/pen/ZLZjzV?editors=1000 -->
-		<button id="screensaver-tuggel" type="button" class="btn btn-lg btn-toggle" data-toggle="button" aria-pressed="{{useScreensaver}}" autocomplete="{{useScreensaver ? 'off' : 'on'}}"
-				ng-click="useScreensaver = (useScreensaver == true ? false : true)">
-			<div class="handle"></div>
-		</button>
-		<br>
-		<br>
-	</div>
-=======
-    </div>
-    <br>
-    <br>
-    <br>
-    <a class="btn btn-default btn-lg " ng-click="GetDevices()">Refresh data</a>
-    <a class="btn btn-default btn-lg " ng-click="RefreshData()">Rescan lan devices</a>
-    <a class="btn btn-default btn-lg " ng-click="FullScreen()">Set FullScreen</a>
->>>>>>> master
-</div>
+</body>
+
+</html>
