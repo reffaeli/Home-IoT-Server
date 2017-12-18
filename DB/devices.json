@@ -34,7 +34,7 @@
     },
     "id3": {
         "mac": "accf2334e632",
-        "name": "Water heater",
+        "name": "בוילר",
         "brand": "Orvibo",
 		"model" : "S20",
         "types": [
@@ -55,7 +55,7 @@
     },
     "id6": {
         "mac": "34ce0092edcf",
-        "name": "Dining light",
+        "name": "תאורת סלון",
         "brand": "Philips",
 		"model" : "Ceiling",
         "types": [

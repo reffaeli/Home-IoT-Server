@@ -47,6 +47,14 @@
     text-indent: .3em;
   }
 
+  .hebrew-title {
+    top:42%;
+
+    font-size: 15px;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
+    text-indent: .3em;
+  }
+
   .sunrise-title {
     top:48%;
 

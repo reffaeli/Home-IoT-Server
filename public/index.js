@@ -46,27 +46,41 @@ IoTApp.controller('indexCtrl', function ($scope) {
     // For next use
 });
 
+var isMobile;
+
 IoTApp.controller('screensaverCtrl', function ($scope, $http) {
     $scope.clock;
     $scope.date;
     $scope.day;
+    $scope.hebrewDate;
     $scope.sunrise;
     $scope.sunset;
+    $scope.sunsetDate;
     $scope.weatherTemp;
     $scope.waetherIconPath;
     $scope.waetherDesc;
-    $scope.backgroundImageName = 'walla.png';
+
+    $scope.SetWallpaper = () => {
+        if (isMobile.matches) {
+            $scope.backgroundImageName = 'walla.png';
+        } else {
+            $scope.backgroundImageName = 'wallad.jpg';
+        }
+
+    }
+    $scope.SetWallpaper();
 
     $scope.GetWeather = function (device) {
         $http({
-            url: 'http://api.openweathermap.org/data/2.5/weather?id=293845&units=metric&appid=b4307327514f6f9aa8e28ab0e65a930b',
+            url: 'screensaver',
             method: 'GET'
         })
             .then(function (response) {
+                $scope.hebrewDate = response.data.hebrew;
                 var sunrise = new Date(response.data.sys.sunrise * 1000);
-                var sunset = new Date(response.data.sys.sunset * 1000);
+                $scope.sunsetDate = new Date(response.data.sys.sunset * 1000);
                 $scope.sunrise = sunrise.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-                $scope.sunset = sunset.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                $scope.sunset = $scope.sunsetDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
                 $scope.weatherTemp = response.data.main.temp;// + '°';
                 $scope.waetherDesc = response.data.weather[0].description;
                 $scope.waetherIconPath = "http://openweathermap.org/img/w/" + response.data.weather[0].icon + ".png";
@@ -77,7 +91,7 @@ IoTApp.controller('screensaverCtrl', function ($scope, $http) {
     };
 
     setInterval($scope.GetWeather, 150000);// loading data every 5 minuts
-    setTimeout($scope.GetWeather, 5000);
+    setTimeout($scope.GetWeather, 4000);
 
     $scope.daysInWeek = ['יום ראשון', 'יום שני', 'יום שלישי', 'יום רביעי', 'יום חמישי', 'יום שישי', 'שבת קודש', 'מוצאי שבת קודש'];
 
@@ -110,7 +124,7 @@ IoTApp.controller('mainCtrl', function ($scope, $http, updatesService) {
 
     $(document).ready(function () {
 
-        var isMobile = window.matchMedia("only screen and (max-width: 760px)");
+        isMobile = window.matchMedia("only screen and (max-width: 760px)");
 
         if (isMobile.matches) {
             $scope.useScreensaver = true;
