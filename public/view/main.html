@@ -38,11 +38,8 @@
             <!-- Thanks to https://codepen.io/aanjulena/pen/ZLZjzV?editors=1000 -->
             <div>
                 <div class="switch-area">
-                    <div ng-if="device.state == 'error'" style="color: red">
-                        שגיאה במכשיר
-                    </div>
                     <button type="button" class="btn btn-lg btn-secondary btn-toggle " ng-class="device.state == 'on' ? 'active' : ''" ng-click="SetState(device)">
-                        <div class="handle"></div>
+                        <div class="" ng-class="device.state == 'error' ? 'handle-error' : 'handle'"></div>
                     </button>
                 </div>
             </div>
@@ -140,7 +137,7 @@
         <br>
         <b>הפעל שומר מסך:</b>
         <!-- thanks for https://codepen.io/aanjulena/pen/ZLZjzV?editors=1000 -->
-        <button id="screensaver-tuggel" type="button" class="btn btn-lg btn-toggle" data-toggle="button" aria-pressed="{{useScreensaver}}"
+        <button id="screensaver-tuggel" type="button" class="btn btn-sm btn-toggle" data-toggle="button" aria-pressed="{{useScreensaver}}"
             autocomplete="{{useScreensaver ? 'off' : 'on'}}" ng-click="useScreensaver = (useScreensaver == true ? false : true)">
             <div class="handle"></div>
         </button>

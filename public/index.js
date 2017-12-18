@@ -61,12 +61,11 @@ IoTApp.controller('screensaverCtrl', function ($scope, $http) {
     $scope.waetherDesc;
 
     $scope.SetWallpaper = () => {
-        if (isMobile.matches) {
-            $scope.backgroundImageName = 'walla.png';
-        } else {
+        if (!(isMobile.matches)) {
             $scope.backgroundImageName = 'wallad.jpg';
+        } else {
+            $scope.backgroundImageName = 'walla.png';
         }
-
     }
     $scope.SetWallpaper();
 
