@@ -37,45 +37,12 @@ app.use(function (req, res, next) { // middelwhere for security
 // Server API routing
 
 // ScreensaverArea
-var request = require('request');
-var request = require('request');
+var screensaverHandler = require('./modules/screensaver');
+
 app.get('/screensaver', function (req, res) {
-  logger.write.debug('requset POST  /screensaver arrived');
-
-  // Configure the request
-  var weatherReq = {
-    url: 'http://api.openweathermap.org/data/2.5/weather?id=293845&units=metric&appid=b4307327514f6f9aa8e28ab0e65a930b',
-    method: 'GET'
-  }
-
-
-  // Start the request
-  request(weatherReq, function (error, response, weatherBody) {
-    if (error) {
-      res.statusCode = 403;
-      res.send('error in weather' + error);
-      return;
-    }
-
-    var weather = JSON.parse(weatherBody)
-    var d = new Date();
-    var hebrewCalReq = {
-      url: 'http://www.hebcal.com/converter/?cfg=json&gy=' +
-        d.getFullYear() + '&gm=' + (d.getMonth() + 1) + '&gd=' + d.getDate() + (weather.sys.sunset * 1000 > d ?'': '&gs=1') + '&g2h=1',
-      method: 'GET'
-    }
-    request(hebrewCalReq, function (error, response, hebrewCalBody) {
-      if (error) {
-        res.statusCode = 403;
-        res.send('error in hebrewcalc' + error);
-        return;
-      }
-      var hebrewCal = JSON.parse(hebrewCalBody);
-
-      weather['hebrew'] = hebrewCal.hebrew;
-      res.send(weather);
-      // TODO image icon also
-    });
+  logger.write.debug('requset GET  /screensaver arrived');
+  screensaverHandler.GetScreensaverInfo((screensaverInfo) => {
+    res.send(screensaverInfo);
   });
 });
 
