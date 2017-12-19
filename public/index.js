@@ -82,7 +82,7 @@ IoTApp.controller('screensaverCtrl', function ($scope, $http) {
                 $scope.sunset = $scope.sunsetDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
                 $scope.weatherTemp = response.data.main.temp;// + '°';
                 $scope.waetherDesc = response.data.weather[0].description;
-                $scope.waetherIconPath = "http://openweathermap.org/img/w/" + response.data.weather[0].icon + ".png";
+                $scope.waetherIconPath = "/weatherimage/" + response.data.weather[0].icon + ".png";
             },
             function (response) { // optional
                 console.error(response.data);
@@ -165,7 +165,7 @@ IoTApp.controller('mainCtrl', function ($scope, $http, updatesService) {
             if (!$scope.useScreensaver)
                 return;
             $scope.noActionInc++;
-            if ($scope.isScreeensaverOn == false && $scope.noActionInc > 30) {// after 30 seconds of not tuching screnn
+            if ($scope.isScreeensaverOn == false && $scope.noActionInc > 90) {// after 30 seconds of not tuching screnn
                 $('#fsModal').modal('show');
                 $scope.isScreeensaverOn = true;
             }

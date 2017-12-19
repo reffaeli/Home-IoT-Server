@@ -40,12 +40,18 @@ app.use(function (req, res, next) { // middelwhere for security
 var screensaverHandler = require('./modules/screensaver');
 
 app.get('/screensaver', function (req, res) {
-  logger.write.debug('requset GET  /screensaver arrived');
+  //logger.write.debug('requset GET  /screensaver arrived');
   screensaverHandler.GetScreensaverInfo((screensaverInfo) => {
     res.send(screensaverInfo);
   });
 });
 
+app.get('/weatherimage/:filename', function (req, res) {
+  //logger.write.debug('requset GET  /weatherimage/' + req.params.filename + ' arrived');
+  screensaverHandler.CreateWeatherImageCach(req.params.filename, () => {
+    res.sendFile(__dirname + '/cache/' + req.params.filename);
+  });
+});
 // Access API
 
 // Login
