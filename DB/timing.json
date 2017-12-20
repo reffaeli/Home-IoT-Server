@@ -78,5 +78,19 @@
 		"time": "07:54",
 		"trigger": "uxgnjcju6j",
 		"active": "off"
+	},
+	"ry2JWBDzf": {
+		"timingType": "once",
+		"date": "20-12-17",
+		"time": "3:48",
+		"trigger": "fheu89ddj",
+		"active": "off"
+	},
+	"rk8NlawGM": {
+		"timingType": "once",
+		"date": "20-12-17",
+		"time": "12:50",
+		"trigger": "veghjdjre",
+		"active": "on"
 	}
 }
