@@ -96,9 +96,11 @@ app.post('/logout', function (req, res) {
 // Logout for all users and connectd ip`s
 app.post('/logout/all', function (req, res) {
   logger.write.debug('requset POST /logout/all arrived');
-  securityHandler.ClearCache((err) => {
-    if (err)
+  securityHandler.ClearCache(req, (err) => {
+    if (err) {
       res.statusCode = 503;
+      logger.write.warn('Error with requset POST /logout/all ,' + err);
+    }
     res.send(err ? err : `Logout all seccessfuly`);
   });
 });
@@ -112,8 +114,10 @@ app.post('/logout/all', function (req, res) {
 app.get('/devices', (req, res) => {
   logger.write.debug('requset GET  /devices arrived');
   devicesHandler.GetDevices((devices, err) => {
-    if (err)
+    if (err) {
       res.statusCode = 503;
+      logger.write.warn('Error with requset GET  /devices ,' + err);
+    }
     res.send(!err ? devices : err);
   });
 });
@@ -122,8 +126,10 @@ app.get('/devices', (req, res) => {
 app.get('/devices/:id', (req, res) => {
   logger.write.debug('requset GET  /devices/' + req.params.id + ' arrived');
   devicesHandler.GetDevice(req.params.id, (device, err) => {
-    if (err)
+    if (err) {
       res.statusCode = 503;
+      logger.write.warn('Error with requset GET  /devices/' + req.params.id + ' ,' + err);
+    }
     res.send(!err ? device : err);
   });
 });
@@ -150,8 +156,10 @@ app.put('/devices/:id', (req, res) => {
   }
 
   devicesHandler.SetDeviceProperty(req.params.id, params.type, value, (err) => {
-    if (err)
+    if (err) {
       res.statusCode = 503;
+      logger.write.warn('Error with requset PUT  /devices/' + req.params.id + ' ,' + err);
+    }
     res.send(err);
   });
 });
@@ -160,8 +168,10 @@ app.put('/devices/:id', (req, res) => {
 app.post('/refresh', function (req, res) {
   logger.write.debug('requset POST  /refresh arrived');
   devicesHandler.RefreshDevicesData((err) => {
-    if (err)
+    if (err) {
       res.statusCode = 503;
+      logger.write.warn('Error with requset POST  /refresh ,' + err);
+    }
     res.send(err);
   });
 });
@@ -172,8 +182,10 @@ app.post('/refresh', function (req, res) {
 app.post('/events/invoke/:id', (req, res) => {
   logger.write.debug('requset POST  /events/invoke/' + req.params.id + ' arrived');
   eventsHandler.InvokeEvent(req.params.id, (err) => {
-    if (err)
+    if (err) {
       res.statusCode = 503;
+      logger.write.warn('Error with requset POST  /events/invoke/' + req.params.id + ' ,' + err);
+    }
     res.send(err);
   });
 });
@@ -182,8 +194,10 @@ app.post('/events/invoke/:id', (req, res) => {
 app.get('/events', (req, res) => {
   logger.write.debug('requset GET  /events arrived');
   eventsHandler.GetEvents((events, err) => {
-    if (err)
+    if (err) {
       res.statusCode = 503;
+      logger.write.warn('Error with requset GET  /events ,' + err);
+    }
     res.send(!err ? events : err)
   });
 });
@@ -215,8 +229,10 @@ app.post('/events', (req, res) => {
   }
 
   eventsHandler.CreateEvent(name, actions, (err) => {
-    if (err)
+    if (err) {
       res.statusCode = 503;
+      logger.write.warn('Error with requset POST  /events ,' + err);
+    }
     res.send(err)
   });
 });
@@ -246,8 +262,10 @@ app.put('/events/:id', (req, res) => {
   }
 
   eventsHandler.EditEvent(req.params.id, name, actions, (err) => {
-    if (err)
+    if (err) {
       res.statusCode = 503;
+      logger.write.warn('Error with requset PUT  /events/' + req.params.id + ' ,' + err);
+    }
     res.send(err)
   });
 });
@@ -257,8 +275,10 @@ app.delete('/events/:id', function (req, res) {
   logger.write.debug('requset DELETE  /events/' + req.params.id + ' arrived');
 
   eventsHandler.DeleteEvent(req.params.id, (err) => {
-    if (err)
+    if (err) {
       res.statusCode = 503;
+      logger.write.warn('Error with requset DELETE  /events/' + req.params.id + ' ,' + err);
+    }
     res.send(err);
   });
 });
@@ -271,8 +291,10 @@ app.delete('/events/:id', function (req, res) {
 app.get('/timings', (req, res) => {
   logger.write.debug('requset GET  /timings arrived');
   timingHandler.GetTimings((timings, err) => {
-    if (err)
+    if (err) {
       res.statusCode = 503;
+      logger.write.warn('Error with requset GET  /timings ,' + err);
+    }
     res.send(!err ? timings : err)
   });
 });
@@ -301,8 +323,10 @@ app.post('/timings', (req, res) => {
   }
 
   timingHandler.CreateTiming(timing, (err) => {
-    if (err)
+    if (err) {
       res.statusCode = 503;
+      logger.write.warn('Error with requset POST  /timings ,' + err);
+    }
     res.send(err)
   });
 });
@@ -331,8 +355,10 @@ app.put('/timings/:id', (req, res) => {
   }
 
   timingHandler.EditTiming(req.params.id, timing, (err) => {
-    if (err)
+    if (err) {
       res.statusCode = 503;
+      logger.write.warn('Error with requset PUT  /timings/' + req.params.id + ' ,' + err);
+    }
     res.send(err)
   });
 });
@@ -342,20 +368,24 @@ app.delete('/timings/:id', function (req, res) {
   logger.write.debug('requset DELETE  /timings/' + req.params.id + ' arrived');
 
   timingHandler.DeleteTiming(req.params.id, (err) => {
-    if (err)
+    if (err) {
       res.statusCode = 503;
+      logger.write.warn('Error with requset DELETE  /timings/' + req.params.id + ' ,' + err);
+    }
     res.send(err);
   });
 });
 
 // Logs API
 // delete timings by its id
-app.get('/logs', function (req, res) {
-  logger.write.debug('requset GET /logs arrived');
+app.get('/logs/:security', function (req, res) {
+  logger.write.debug('requset GET /logs/' + req.params.security + ' arrived');
 
-  logger.read(1500, (logs, err) => {
-    if (err)
+  logger.read(req.params.security == 1 , 1500, (logs, err) => {
+    if (err) {
       res.statusCode = 503;
+      logger.write.warn('Error with requset GET /logs/' + req.params.security + ' ,' + err);
+    }
     res.send(!err ? logs : err);
   });
 });
