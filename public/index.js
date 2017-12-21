@@ -103,6 +103,8 @@ IoTApp.controller('screensaverCtrl', function ($scope, $http) {
                 $scope.havdalah = new Date(response.data.shabat.havdalah).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });;
                 $scope.parashat = response.data.shabat.parashat;
 
+                $scope.isSabbat = false;
+
                 var date = new Date();
                 var dayinweek = date.getDay() + 1;
                 $scope.isWeekend = dayinweek >= 6;
@@ -117,6 +119,7 @@ IoTApp.controller('screensaverCtrl', function ($scope, $http) {
                         var shabatEntiring = new Date(sunsetDate.getTime() - 1.8e+6);
                         if (date > shabatEntiring) {
                             $scope.day = 'שבת קודש';
+                            $scope.isSabbat = true;
                             return;
                         }
                     } else {
@@ -124,6 +127,8 @@ IoTApp.controller('screensaverCtrl', function ($scope, $http) {
                         if (date > shabatExsiting) {
                             $scope.day = 'מוצאי שבת קודש';
                             return;
+                        } else {
+                            $scope.isSabbat = true;
                         }
                     }
                 }
