@@ -131,10 +131,8 @@ IoTApp.controller('screensaverCtrl', function ($scope, $http) {
             });
     };
 
-    setInterval($scope.GetWeather, 150000);// loading data every 5 minuts
-    setTimeout($scope.GetWeather, 4000);
-
-
+    setInterval($scope.GetWeather, 120000);// loading data every 2 minuts
+    $scope.GetWeather();
 
     $scope.clockInterval = () => {
         var d = new Date();
