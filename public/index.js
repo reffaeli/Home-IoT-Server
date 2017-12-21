@@ -70,8 +70,8 @@ IoTApp.controller('screensaverCtrl', function ($scope, $http) {
             method: 'GET'
         })
             .then(function (response) {
-               $("#fsModal").css("background-image", "url('" + response.data + "')");
-            
+                $("#fsModal").css("background-image", "url('" + response.data + "')");
+
             },
             function (response) { // optional
                 console.error(response.data);
@@ -109,15 +109,19 @@ IoTApp.controller('screensaverCtrl', function ($scope, $http) {
                 if ($scope.isWeekend) {
                     var sunsetDate = new Date(response.data.sys.sunset * 1000)
 
+                    // weather not update allways... saad
+                    sunsetDate.setFullYear(date.getFullYear());
+                    sunsetDate.setMonth(date.getMonth());
+                    sunsetDate.setDate(date.getDate());
                     if (dayinweek == 6) {
                         var shabatEntiring = new Date(sunsetDate.getTime() - 1.8e+6);
-                        if(date > shabatEntiring){
+                        if (date > shabatEntiring) {
                             $scope.day = 'שבת קודש';
                             return;
                         }
                     } else {
                         var shabatExsiting = new Date(sunsetDate.getTime() + 1.8e+6);
-                        if(date > shabatExsiting){
+                        if (date > shabatExsiting) {
                             $scope.day = 'מוצאי שבת קודש';
                             return;
                         }

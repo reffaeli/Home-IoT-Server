@@ -129,9 +129,16 @@ var GetCurrentWallpaper = (is_desktop, callback) => {
 
             if (dayinweek == 6) { // ==
                 var shabatEntiring = new Date(sunsetDate.getTime() - 1.8e+6);
+                // weather not update allways... saad
+                shabatEntiring.setFullYear(date.getFullYear());
+                shabatEntiring.setMonth(date.getMonth());
+                shabatEntiring.setDate(date.getDate());
                 isSabbat = date > shabatEntiring;
             } else {
                 var shabatExsiting = new Date(sunsetDate.getTime() + 1.8e+6);
+                shabatExsiting.setFullYear(date.getFullYear());
+                shabatExsiting.setMonth(date.getMonth());
+                shabatExsiting.setDate(date.getDate());
                 isSabbat = date < shabatExsiting;
             }
 
@@ -143,7 +150,7 @@ var GetCurrentWallpaper = (is_desktop, callback) => {
     }
 
     // shabat (or 30 minuts orly...)
-    var wallpaper = (date.getMilliseconds() % 30);
+    var wallpaper = (date.getMilliseconds() % 32); // num of images 32
 
     if (isDesktop)// desktop
         path = "desktop"
