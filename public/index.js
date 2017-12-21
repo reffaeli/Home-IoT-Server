@@ -1,3 +1,4 @@
+
 // Init angular app 
 var IoTApp = angular.module("IoTApp", ['rzModule', 'ui.bootstrap', 'ngRoute']);
 
@@ -61,13 +62,24 @@ IoTApp.controller('screensaverCtrl', function ($scope, $http) {
     $scope.waetherDesc;
 
     $scope.SetWallpaper = () => {
-        if (!(isMobile.matches)) {
-            $scope.backgroundImageName = 'wallad.jpg';
-        } else {
-            $scope.backgroundImageName = 'walla.png';
-        }
+        $http({
+            url: '/screensaver_wallpaper/' + (!isMobile.matches ? '1' : '0'),
+            method: 'GET'
+        })
+            .then(function (response) {
+               $("#fsModal").css("background-image", "url('" + response.data + "')");
+            
+            },
+            function (response) { // optional
+                console.error(response.data);
+            });
     }
     $scope.SetWallpaper();
+    setInterval($scope.SetWallpaper, 300000);// loading data every 5 minuts
+
+    $scope.SetWallpaper();
+
+    $scope.daysInWeek = ['יום ראשון', 'יום שני', 'יום שלישי', 'יום רביעי', 'יום חמישי', 'יום שישי', 'שבת קודש', 'מוצאי שבת קודש'];
 
     $scope.GetWeather = function (device) {
         $http({
@@ -83,6 +95,28 @@ IoTApp.controller('screensaverCtrl', function ($scope, $http) {
                 $scope.weatherTemp = response.data.main.temp;// + '°';
                 $scope.waetherDesc = response.data.weather[0].description;
                 $scope.waetherIconPath = "/weatherimage/" + response.data.weather[0].icon + ".png";
+
+                var date = new Date();
+                var dayinweek = date.getDay() + 1;
+                if (dayinweek >= 6) {
+                    var sunsetDate = new Date(response.data.sys.sunset * 1000)
+
+                    if (dayinweek == 6) {
+                        var shabatEntiring = new Date(sunsetDate.getTime() - 1.8e+6);
+                        if(date > shabatEntiring){
+                            $scope.day = 'שבת קודש';
+                            return;
+                        }
+                    } else {
+                        var shabatExsiting = new Date(sunsetDate.getTime() + 1.8e+6);
+                        if(date > shabatExsiting){
+                            $scope.day = 'מוצאי שבת קודש';
+                            return;
+                        }
+                    }
+                }
+
+                $scope.day = $scope.daysInWeek[date.getDay()];
             },
             function (response) { // optional
                 console.error(response.data);
@@ -92,7 +126,7 @@ IoTApp.controller('screensaverCtrl', function ($scope, $http) {
     setInterval($scope.GetWeather, 150000);// loading data every 5 minuts
     setTimeout($scope.GetWeather, 4000);
 
-    $scope.daysInWeek = ['יום ראשון', 'יום שני', 'יום שלישי', 'יום רביעי', 'יום חמישי', 'יום שישי', 'שבת קודש', 'מוצאי שבת קודש'];
+
 
     $scope.clockInterval = () => {
         var d = new Date();
@@ -107,7 +141,7 @@ IoTApp.controller('screensaverCtrl', function ($scope, $http) {
             sec = "0" + d.getSeconds();
         $scope.clock = "" + hr + ":" + min + ":" + sec;
         $scope.date = d.toLocaleDateString();
-        $scope.day = $scope.daysInWeek[d.getDay()];
+
         $scope.$apply();
     }
     setInterval($scope.clockInterval, 1000);
@@ -746,14 +780,14 @@ IoTApp.controller('timingsCtrl', function ($scope, $http) {
     };
 
     $scope.CreateOnceTiming = (selectedEventToOnce, selectedTimeToOnce) => {
-        var t = selectedTimeToOnce ; //new Date();
+        var t = selectedTimeToOnce; //new Date();
         $http({
             url: 'timings',
             method: 'POST',
             data: {
                 timingType: "once",
-                date : t.getDate() + '-' + (t.getMonth() + 1) + '-' + (t.getFullYear() % 100),
-                time : t.getHours()  + ':' + t.getMinutes() ,
+                date: t.getDate() + '-' + (t.getMonth() + 1) + '-' + (t.getFullYear() % 100),
+                time: t.getHours() + ':' + t.getMinutes(),
                 trigger: selectedEventToOnce,
                 active: "on"
             }

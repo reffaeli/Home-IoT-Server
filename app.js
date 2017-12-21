@@ -54,6 +54,17 @@ app.get('/weatherimage/:filename', function (req, res) {
     res.sendFile(__dirname + '/cache/' + req.params.filename);
   });
 });
+
+var base64Img = require('base64-img');
+app.get('/screensaver_wallpaper/:is_desktop', function (req, res) {
+  //logger.write.debug('requset GET  /weatherimage/' + req.params.filename + ' arrived');
+  screensaverHandler.GetCurrentWallpaper(req.params.is_desktop, (path) => {
+    base64Img.base64(publicPath + '/screensaver/wallpaper/' + path, function (err, data) {
+      res.send(data);
+    })
+  });
+});
+
 // Access API
 
 // Login

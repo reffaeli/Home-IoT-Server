@@ -1,7 +1,8 @@
 <div>
     <!-- modal -->
     <div ng-controller="screensaverCtrl" id="fsModal" class="modal screensaver" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true" ng-style="{'background-image':'url(/static/screensaver/wallpaper/'+ backgroundImageName +')'}">
+        aria-hidden="true" >
+        <!-- ng-style="{'background-image':'url('+ backgroundImageName +')'}" -->
         <div class='title screensaver-element' id="title">{{clock}}</div>
         <div class='date-title screensaver-element' id="date-title">{{date}}</div>
         <div class='day-title screensaver-element' id="day-title">{{day}}</div>

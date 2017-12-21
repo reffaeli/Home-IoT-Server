@@ -78,7 +78,47 @@ var CreateWeatherImageCach = (filename, callback) => {
     }
 }
 
+var GetCurrentWallpaper = (is_desktop, callback) => {
+    var date = new Date();
+    var isDesktop = is_desktop == '1';
+    var path = '';
+    var dayinweek = date.getDay() + 1;
+
+    if (dayinweek >= 6) {
+        try {
+            var sunsetDate = new Date(weather.sys.sunset * 1000)
+
+
+            if (dayinweek == 6) { 
+                var shabatEntiring = new Date(sunsetDate.getTime() - 1.8e+6);
+                isSabbat = date > shabatEntiring;
+            } else {
+                var shabatExsiting = new Date(sunsetDate.getTime() + 1.8e+6);
+                isSabbat = date < shabatExsiting;
+            }
+
+            if (isSabbat) {
+                path +
+                    callback("/shabat/" + (isDesktop ? "desktop" : "mobile") + ".jpg");
+                return;
+            }
+        } catch (error) { }
+    }
+
+    // shabat (or 30 minuts orly...)
+    var wallpaper = (date.getMilliseconds() % 30);
+
+    if (isDesktop)// desktop
+        path = "desktop"
+    else
+        path = "mobile"
+
+    path += "/" + wallpaper + ".jpg";
+    callback(path);
+}
+
 module.exports = {
     GetScreensaverInfo: GetScreensaverInfo,
-    CreateWeatherImageCach: CreateWeatherImageCach
+    CreateWeatherImageCach: CreateWeatherImageCach,
+    GetCurrentWallpaper: GetCurrentWallpaper
 }
