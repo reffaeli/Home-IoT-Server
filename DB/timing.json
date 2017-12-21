@@ -78,11 +78,5 @@
 		"time": "07:54",
 		"trigger": "uxgnjcju6j",
 		"active": "off"
-	},
-	"HJHRkuYMM": {
-		"timingType": "timer",
-		"durationInMinuts": 20,
-		"trigger": "fheu89ddj",
-		"active": "on"
 	}
 }
