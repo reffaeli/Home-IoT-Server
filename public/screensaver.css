@@ -4,14 +4,10 @@
     src: url('../static/screensaver/VarelaRound-Regular.woff');
 }
  
-.screensaver{
-   
 
-     /* we set transition to 'all' properies - but you can use it just for background image either - by default the time is set to 1 second, you can change it yourself*/
-  /* transition: linear all 1s; */
-  /* if you don't use delay , background will disapear and transition will start from a white background - you have to set the transition-delay the same as transition time OR more , so there won't be any problems */
-  /* -webkit-transition-delay: 1s;Safari */
-  /* transition-delay: 1s; */
+
+.screensaver{
+ 
 
   background-repeat: no-repeat;
   background-size: cover;
@@ -24,80 +20,89 @@
     z-index: 1;
 
     text-align: center;
-
-    color: white;
+    font-weight: bold;
     text-transform: uppercase;
     font-family: hebrewFont;
+
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
 }
 
 .title {
-    top:23%;
+    top:18%;
 
     letter-spacing: .4em;
     font-size: 42px;
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
-    text-indent: .3em;
+  
   }
   
   .date-title {
-    top:32%;
+    top:27%;
 
     letter-spacing: .4em;
     font-size: 22px;
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
-    text-indent: .3em;
+   
+
+    
   }
 
   .day-title {
-    top:38%;
+    top:33%;
 
     font-size: 22px;
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
-    text-indent: .3em;
+    
   }
 
   .hebrew-title {
-    top:42%;
+    top:37%;
 
     font-size: 15px;
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
-    text-indent: .3em;
+   
   }
 
   .sunrise-title {
-    top:48%;
+    top:45%;
 
     font-size: 15px;
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
-    text-indent: .3em;
+    
   }
 
   .sunset-title {
-    top:52%;
-
+    top:49%;
     font-size: 15px;
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
-    text-indent: .3em;
+  }
+
+  .parashat-title {
+    top:57%;
+    font-size: 15px;
+  }
+
+  .candles-title {
+    top:61%;
+    font-size: 15px;
+  }
+
+  .havdalah-title {
+    top:65%;
+    font-size: 15px;
   }
 
   .description-weather {
-    top:76%;
+    top:84%;
 
     font-size: 15px;
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
-    text-indent: .3em;
+  
   }
 
   .celcius-weather {
-    top:71%;
+    top:79%;
 
     
     font-size: 15px;
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
-    text-indent: .3em;
+   
   }
   .icon-weather {
-    top: 66%;
+    top: 74%;
     
     width :70px;
     height :70px;

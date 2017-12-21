@@ -56,6 +56,9 @@ IoTApp.controller('screensaverCtrl', function ($scope, $http) {
     $scope.hebrewDate;
     $scope.sunrise;
     $scope.sunset;
+    $scope.candles;
+    $scope.havdalah;
+    $scope.parashat;
     $scope.sunsetDate;
     $scope.weatherTemp;
     $scope.waetherIconPath;
@@ -96,9 +99,14 @@ IoTApp.controller('screensaverCtrl', function ($scope, $http) {
                 $scope.waetherDesc = response.data.weather[0].description;
                 $scope.waetherIconPath = "/weatherimage/" + response.data.weather[0].icon + ".png";
 
+                $scope.candles = new Date(response.data.shabat.candles).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                $scope.havdalah = new Date(response.data.shabat.havdalah).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });;
+                $scope.parashat = response.data.shabat.parashat;
+
                 var date = new Date();
                 var dayinweek = date.getDay() + 1;
-                if (dayinweek >= 6) {
+                $scope.isWeekend = dayinweek >= 6;
+                if ($scope.isWeekend) {
                     var sunsetDate = new Date(response.data.sys.sunset * 1000)
 
                     if (dayinweek == 6) {

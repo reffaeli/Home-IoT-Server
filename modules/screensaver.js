@@ -5,12 +5,47 @@ var fs = require('fs')
 
 var weather = {};
 var hebrewCal = {};
+var hebrewShabat = {};
 
 var downloadFile = function (uri, filename, callback) {
     request.head(uri, function (err, res, body) {
         request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
     });
 };
+
+var ReadHebrewShabbat = (callback) => {
+    var hebrewCalShabbat = {
+        url: 'http://www.hebcal.com/shabbat/?cfg=json&geonameid=294801&m=40&a=on&b=30',
+        method: 'GET'
+    }
+    request(hebrewCalShabbat, function (error, response, hebrewShabbatBody) {
+        if (error) {
+            logger.write.warn("Error while getting hebrewCalShabbat from www.hebcal.com :" + error);
+            return;
+        }
+        var fullShabatInfo = JSON.parse(hebrewShabbatBody);
+
+        fullShabatInfo.items.forEach(element => {
+            switch (element.category) {
+                case 'candles':
+                    hebrewShabat.candles = element.date;
+                    break;
+                case 'parashat':
+                    hebrewShabat.parashat = element.hebrew;
+                    break;
+                case 'havdalah':
+                    hebrewShabat.havdalah = element.date;
+                    break;
+
+                default:
+                    break;
+            }
+        });
+
+        if (callback)
+            callback();
+    });
+}
 
 var ReadHebrewCal = (callback) => {
     var d = new Date();
@@ -53,15 +88,18 @@ var ReadWeather = (callback) => {
 
 logger.write.info("Start reading screensaver info...");
 ReadWeather(ReadHebrewCal);
+ReadHebrewShabbat();
 
-setInterval(ReadWeather, 60000);
-setInterval(ReadHebrewCal, 300000);
+setInterval(ReadWeather, 60000); // every minus
+setInterval(ReadHebrewCal, 600000); // every 10 minuts
+setInterval(ReadHebrewShabbat, 3.6e+6); // every hour
 
 
 
 var GetScreensaverInfo = (next) => {
 
     weather['hebrew'] = hebrewCal.hebrew;
+    weather['shabat'] = hebrewShabat;
 
     next(weather);
 }
@@ -84,12 +122,12 @@ var GetCurrentWallpaper = (is_desktop, callback) => {
     var path = '';
     var dayinweek = date.getDay() + 1;
 
-    if (dayinweek >= 6) {
+    if (dayinweek >= 6) { // 6
         try {
             var sunsetDate = new Date(weather.sys.sunset * 1000)
 
 
-            if (dayinweek == 6) { 
+            if (dayinweek == 6) { // ==
                 var shabatEntiring = new Date(sunsetDate.getTime() - 1.8e+6);
                 isSabbat = date > shabatEntiring;
             } else {
@@ -98,8 +136,7 @@ var GetCurrentWallpaper = (is_desktop, callback) => {
             }
 
             if (isSabbat) {
-                path +
-                    callback("/shabat/" + (isDesktop ? "desktop" : "mobile") + ".jpg");
+                callback("/shabat/" + (isDesktop ? "desktop" : "mobile") + ".jpg");
                 return;
             }
         } catch (error) { }
