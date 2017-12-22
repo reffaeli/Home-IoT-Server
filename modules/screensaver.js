@@ -153,11 +153,11 @@ var GetCurrentWallpaper = (is_desktop, callback) => {
     var wallpaper = (date.getMilliseconds() % 32); // num of images 32
 
     if (isDesktop)// desktop
-        path = "desktop"
+        path = "desktop/" + (date.getMilliseconds() % 37);
     else
-        path = "mobile"
+        path = "mobile/" + (date.getMilliseconds() % 79);
 
-    path += "/" + wallpaper + ".jpg";
+    path +=  ".jpg";
     callback(path);
 }
 
