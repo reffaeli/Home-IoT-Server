@@ -109,12 +109,8 @@ IoTApp.controller('screensaverCtrl', function ($scope, $http) {
                 var dayinweek = date.getDay() + 1;
                 $scope.isWeekend = dayinweek >= 6;
                 if ($scope.isWeekend) {
-                    var sunsetDate = new Date(response.data.sys.sunset * 1000)
+                    var sunsetDate = new Date(response.data.sys.sunset);
 
-                    // weather not update allways... saad
-                    sunsetDate.setFullYear(date.getFullYear());
-                    sunsetDate.setMonth(date.getMonth());
-                    sunsetDate.setDate(date.getDate());
                     if (dayinweek == 6) {
                         var shabatEntiring = new Date(sunsetDate.getTime() - 1.8e+6);
                         if (date > shabatEntiring) {
@@ -123,7 +119,7 @@ IoTApp.controller('screensaverCtrl', function ($scope, $http) {
                             return;
                         }
                     } else {
-                        var shabatExsiting = new Date(sunsetDate.getTime() + 1.8e+6);
+                        var shabatExsiting = new Date(sunsetDate.getTime() + 2.4e+6);
                         if (date > shabatExsiting) {
                             $scope.day = 'מוצאי שבת קודש';
                             return;

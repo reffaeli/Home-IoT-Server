@@ -51,7 +51,7 @@ var ReadHebrewCal = (callback) => {
     var d = new Date();
     var hebrewCalReq = {
         url: 'http://www.hebcal.com/converter/?cfg=json&gy=' +
-            d.getFullYear() + '&gm=' + (d.getMonth() + 1) + '&gd=' + d.getDate() + (weather.sys.sunset * 1000 > d ? '' : '&gs=1') + '&g2h=1',
+            d.getFullYear() + '&gm=' + (d.getMonth() + 1) + '&gd=' + d.getDate() + (weather.sys.sunset > d ? '' : '&gs=1') + '&g2h=1',
         method: 'GET'
     }
     request(hebrewCalReq, function (error, response, hebrewCalBody) {
@@ -80,9 +80,22 @@ var ReadWeather = (callback) => {
         }
 
         weather = JSON.parse(weatherBody)
+        var date = new Date(); 
+        var sunrise = new Date(weather.sys.sunrise * 1000);
+        var sunset = new Date(weather.sys.sunset * 1000);
+        // weather not update allways so use yesterday times... saad
+        sunrise.setFullYear(date.getFullYear());
+        sunrise.setMonth(date.getMonth());
+        sunrise.setDate(date.getDate());
+        sunset.setFullYear(date.getFullYear());
+        sunset.setMonth(date.getMonth());
+        sunset.setDate(date.getDate());
+        
+        weather.sys.sunrise = sunrise;
+        weather.sys.sunset = sunset;
+
         if (callback)
             callback();
-        // TODO image icon also
     });
 };
 
@@ -124,21 +137,12 @@ var GetCurrentWallpaper = (is_desktop, callback) => {
 
     if (dayinweek >= 6) { // 6
         try {
-            var sunsetDate = new Date(weather.sys.sunset * 1000)
-
 
             if (dayinweek == 6) { // ==
-                var shabatEntiring = new Date(sunsetDate.getTime() - 1.8e+6);
-                // weather not update allways... saad
-                shabatEntiring.setFullYear(date.getFullYear());
-                shabatEntiring.setMonth(date.getMonth());
-                shabatEntiring.setDate(date.getDate());
+                var shabatEntiring = new Date(weather.sys.sunset - 1.8e+6); // 30 minus
                 isSabbat = date > shabatEntiring;
             } else {
-                var shabatExsiting = new Date(sunsetDate.getTime() + 1.8e+6);
-                shabatExsiting.setFullYear(date.getFullYear());
-                shabatExsiting.setMonth(date.getMonth());
-                shabatExsiting.setDate(date.getDate());
+                var shabatExsiting = new Date(weather.sys.sunset + 2.4e+6); // 40 minuts
                 isSabbat = date < shabatExsiting;
             }
 
@@ -148,9 +152,6 @@ var GetCurrentWallpaper = (is_desktop, callback) => {
             }
         } catch (error) { }
     }
-
-    // shabat (or 30 minuts orly...)
-    var wallpaper = (date.getMilliseconds() % 32); // num of images 32
 
     if (isDesktop)// desktop
         path = "desktop/" + (date.getMilliseconds() % 37);

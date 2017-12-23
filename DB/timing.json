@@ -59,7 +59,7 @@
 		],
 		"time": "20:00",
 		"trigger": "uxgnjcju6j",
-		"active": "off"
+		"active": "on"
 	},
 	"6": {
 		"timingType": "daily",
@@ -68,15 +68,24 @@
 		],
 		"time": "07:00",
 		"trigger": "hd63jkvh2",
-		"active": "off"
+		"active": "on"
 	},
-	"5temp": {
+	"7": {
 		"timingType": "daily",
 		"days": [
-			"wednesday"
+			"saturday"
 		],
-		"time": "07:54",
+		"time": "13:00",
 		"trigger": "uxgnjcju6j",
-		"active": "off"
+		"active": "on"
+	},
+	"8": {
+		"timingType": "daily",
+		"days": [
+			"saturday"
+		],
+		"time": "16:00",
+		"trigger": "hd63jkvh2",
+		"active": "on"
 	}
 }
