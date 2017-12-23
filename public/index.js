@@ -91,8 +91,8 @@ IoTApp.controller('screensaverCtrl', function ($scope, $http) {
         })
             .then(function (response) {
                 $scope.hebrewDate = response.data.hebrew;
-                var sunrise = new Date(response.data.sys.sunrise * 1000);
-                $scope.sunsetDate = new Date(response.data.sys.sunset * 1000);
+                var sunrise = new Date(response.data.sys.sunrise);
+                $scope.sunsetDate = new Date(response.data.sys.sunset);
                 $scope.sunrise = sunrise.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
                 $scope.sunset = $scope.sunsetDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
                 $scope.weatherTemp = response.data.main.temp;// + '°';
