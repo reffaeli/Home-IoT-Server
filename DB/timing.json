@@ -24,7 +24,7 @@
 		],
 		"time": "06:15",
 		"trigger": "vwwrp55sq",
-		"active": "off"
+		"active": "on"
 	},
 	"3": {
 		"timingType": "daily",
