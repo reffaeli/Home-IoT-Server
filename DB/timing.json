@@ -22,8 +22,8 @@
 			"thursday",
 			"friday"
 		],
-		"time": "06:15",
-		"trigger": "vwwrp55sq",
+		"time": "06:35",
+		"trigger": "hd63jkvh2",
 		"active": "on"
 	},
 	"3": {
@@ -37,7 +37,7 @@
 		],
 		"time": "17:30",
 		"trigger": "veghjdjre",
-		"active": "off"
+		"active": "on"
 	},
 	"4": {
 		"timingType": "daily",
@@ -50,7 +50,7 @@
 		],
 		"time": "18:15",
 		"trigger": "fheu89ddj",
-		"active": "off"
+		"active": "on"
 	},
 	"5": {
 		"timingType": "daily",

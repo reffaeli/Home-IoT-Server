@@ -19,23 +19,8 @@
 			}
 		]
 	},
-	"vwwrp55sq": {
-		"name": "כיבוי בוילר ומזגן מושי",
-		"actions": [
-			{
-				"deviceID": "id3",
-				"type": "switch",
-				"state": "off"
-			},
-			{
-				"deviceID": "id02",
-				"type": "switch",
-				"state": "off"
-			}
-		]
-	},
 	"uxgnjcju6j": {
-		"name": "מזגן מושי",
+		"name": " מזגן מושי - חום בינוני",
 		"actions": [
 			{
 				"deviceID": "id02",
@@ -54,6 +39,86 @@
 		"actions": [
 			{
 				"deviceID": "id02",
+				"type": "switch",
+				"state": "off"
+			}
+		]
+	},
+	"HyNMbwaMz": {
+		"name": " מזגן מושי - חום גבוה",
+		"actions": [
+			{
+				"deviceID": "id02",
+				"type": "ac",
+				"state": "on",
+				"set": {
+					"mode": "hot",
+					"fan_strength": "high",
+					"temp": 28
+				}
+			}
+		]
+	},
+	"S1G6bwaGz": {
+		"name": "מזגן סלון - חום גבוה",
+		"actions": [
+			{
+				"deviceID": "id0",
+				"type": "ac",
+				"state": "on",
+				"set": {
+					"mode": "hot",
+					"fan_strength": "high",
+					"temp": 28
+				}
+			}
+		]
+	},
+	"HJzkGwaMG": {
+		"name": "מזגן סלון -חום נמוך",
+		"actions": [
+			{
+				"deviceID": "id0",
+				"type": "ac",
+				"state": "on",
+				"set": {
+					"mode": "hot",
+					"fan_strength": "low",
+					"temp": 26
+				}
+			}
+		]
+	},
+	"SkUrzD6zz": {
+		"name": "מזגן שינה",
+		"actions": [
+			{
+				"deviceID": "id01",
+				"type": "ac",
+				"state": "on",
+				"set": {
+					"mode": "hot",
+					"fan_strength": "high",
+					"temp": 27
+				}
+			}
+		]
+	},
+	"r1D_GwafG": {
+		"name": "כיבוי מזגן סלון",
+		"actions": [
+			{
+				"deviceID": "id0",
+				"type": "switch",
+				"state": "off"
+			}
+		]
+	},
+	"S1Eczvafz": {
+		"name": "כיבוי מזגן שינה",
+		"actions": [
+			{
+				"deviceID": "id01",
 				"type": "switch",
 				"state": "off"
 			}
