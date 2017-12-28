@@ -87,19 +87,5 @@
 		"time": "16:00",
 		"trigger": "hd63jkvh2",
 		"active": "on"
-	},
-	"HJT-OHemG": {
-		"timingType": "once",
-		"date": "27-12-17",
-		"time": "4:30",
-		"trigger": "veghjdjre",
-		"active": "on"
-	},
-	"ByY7OSgQf": {
-		"timingType": "once",
-		"date": "27-12-17",
-		"time": "5:15",
-		"trigger": "fheu89ddj",
-		"active": "on"
 	}
 }
