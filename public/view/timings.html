@@ -3,6 +3,66 @@
     <div class="panel-heading">תזמון יומי</div>
     <!-- panel to show current event menu -->
     <div class="panel-body">
+
+
+        <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#dailyModal">צור תזמון יומי</button>
+
+        <!-- Create timer Modal -->
+        <div class="modal fade" id="dailyModal" tabindex="-1" role="dialog" aria-labelledby="dailyModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="onceModalLabel">צור תזמון יומי</h5>
+
+                    </div>
+                    <div class="modal-body">
+                        פעולה לביצוע:
+                        <select ng-model="selectedEventToDaily">
+                            <option ng-repeat="option in events" ng-value="option.id">{{option.name}}</option>
+                        </select>
+                        <br>ב:
+                        <input type="time" ng-model="selectedTimeToDaily" />
+                        <br> ובימים:
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="" ng-model="newDailyDays.sunday">ראשון</label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="" ng-model="newDailyDays.monday">שני</label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="" ng-model="newDailyDays.tuesday">שלישי</label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="" ng-model="newDailyDays.wednesday">רביעי</label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="" ng-model="newDailyDays.thursday">חמישי</label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="" ng-model="newDailyDays.friday">שיש</label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="" ng-model="newDailyDays.saturday">שבת</label>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ביטול</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="CreateDaly(selectedEventToDaily, selectedTimeToDaily)">
+                            שמור תזמון</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div style="margin:20px;">
             <!--show menues in expender view-->
             <div class="panel-group" id="accordion{{timing.id}}">
@@ -19,10 +79,35 @@
                     </div>
                     <div id="{{timing.id}}" class="panel-collapse collapse">
                         <div class="panel-body">
-                            ימים:
-                            <ul>
-                                <li ng-repeat="day in timing.days">{{day}}</li>
-                            </ul>
+                            בימים:
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" disabled ng-checked="{{timing.days.indexOf('sunday') == -1 ? false : true}}">ראשון</label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" disabled ng-checked="{{timing.days.indexOf('monday') == -1 ? false : true}}">שני</label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" disabled ng-checked="{{timing.days.indexOf('tuesday') == -1 ? false : true}}">שלישי</label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" disabled ng-checked="{{timing.days.indexOf('wednesday') == -1 ? false : true}}">רביעי</label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" disabled ng-checked="{{timing.days.indexOf('thursday') == -1 ? false : true}}">חמישי</label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" disabled ng-checked="{{timing.days.indexOf('friday') == -1 ? false : true}}">שישי</label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" disabled ng-checked="{{timing.days.indexOf('saturday') == -1 ? false : true}}">שבת</label>
+                            </div>
 
                             זמן:
                             <b> {{timing.time}} </b>
@@ -43,28 +128,28 @@
     <div class="panel-body">
 
 
-        <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#onceModal">Create new timing</button>
+        <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#onceModal">צור תזמון</button>
 
         <!-- Create timer Modal -->
         <div class="modal fade" id="onceModal" tabindex="-1" role="dialog" aria-labelledby="onceModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="onceModalLabel">Create new timing</h5>
+                        <h5 class="modal-title" id="onceModalLabel">צור תזמון</h5>
 
                     </div>
                     <div class="modal-body">
-                        action to invoke
+                        פעולה לביצוע:
                         <select ng-model="selectedEventToOnce">
                             <option ng-repeat="option in events" ng-value="option.id">{{option.name}}</option>
                         </select>
-                        at
+                        <br> בתאריך
                         <input type="datetime-local" ng-model="selectedTimeToOnce" />
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ביטול</button>
                         <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="CreateOnceTiming(selectedEventToOnce, selectedTimeToOnce)">
-                            Save Timing</button>
+                            שמור תזמון</button>
                     </div>
                 </div>
             </div>
@@ -77,7 +162,7 @@
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion{{timing.id}}" data-target="#{{timing.id}}">הפעל: {{timing.triggerName}}</a>
-							<button type="button" class="btn btn-sm btn-toggle" data-toggle="button" aria-pressed="({timing.active == 'on')}" autocomplete="{{timing.active == 'on' ? 'on' : 'off'}}"
+                            <button type="button" class="btn btn-sm btn-toggle" data-toggle="button" aria-pressed="({timing.active == 'on')}" autocomplete="{{timing.active == 'on' ? 'on' : 'off'}}"
                                 ng-class="timing.active == 'on' ? 'active' : ''" ng-click="TuggelTimingActive(timing)">
                                 <div class="handle"></div>
                             </button>
@@ -105,28 +190,28 @@
     <div class="panel-heading">תזמון טיימר</div>
     <!-- panel to show current event menu -->
     <div class="panel-body">
-        <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#timerModal">Create new timer</button>
+        <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#timerModal">צור טיימר</button>
 
         <!-- Create timer Modal -->
         <div class="modal fade" id="timerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Create new timer</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">צור טיימר</h5>
 
                     </div>
                     <div class="modal-body">
-                        action to invoke
+                        פעולה לביצוע:
                         <select ng-model="selectedEventToTimer">
                             <option ng-repeat="option in events" ng-value="option.id">{{option.name}}</option>
                         </select>
-                        in
-                        <input type="number" ng-model="selectedMinutsToTimer" /> minuts
+                        <br> תוך
+                        <input type="number" ng-model="selectedMinutsToTimer" /> דקות
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ביטול</button>
                         <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="CreateTimer(selectedEventToTimer, selectedMinutsToTimer)">
-                            Save Timer</button>
+                            שמור טיימר</button>
                     </div>
                 </div>
             </div>
@@ -140,7 +225,7 @@
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion{{timing.id}}" data-target="#{{timing.id}}">הפעל: {{timing.triggerName}}</a>
-							<button type="button" class="btn btn-sm btn-toggle" data-toggle="button" aria-pressed="({timing.active == 'on')}" autocomplete="{{timing.active == 'on' ? 'on' : 'off'}}"
+                            <button type="button" class="btn btn-sm btn-toggle" data-toggle="button" aria-pressed="({timing.active == 'on')}" autocomplete="{{timing.active == 'on' ? 'on' : 'off'}}"
                                 ng-class="timing.active == 'on' ? 'active' : ''" ng-click="TuggelTimingActive(timing)">
                                 <div class="handle"></div>
                             </button>
@@ -148,11 +233,11 @@
                     </div>
                     <div id="{{timing.id}}" class="panel-collapse collapse">
                         <div class="panel-body">
-                            זמן התחלה : <b> {{timing.startTime}}</b>
-                            <br>
-                            זמן הפעלה : <b> {{timing.operateTime}}</b>
-                            <br>                            
-                            טווח השהיה (בדקות):
+                            זמן התחלה :
+                            <b> {{timing.startTime}}</b>
+                            <br> זמן הפעלה :
+                            <b> {{timing.operateTime}}</b>
+                            <br> טווח השהיה (בדקות):
                             <b> {{timing.durationInMinuts}} </b>
                             <br>
                             <br>
