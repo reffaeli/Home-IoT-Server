@@ -24,7 +24,7 @@
 		],
 		"time": "06:35",
 		"trigger": "hd63jkvh2",
-		"active": "on"
+		"active": "off"
 	},
 	"3": {
 		"timingType": "daily",
@@ -88,18 +88,25 @@
 		"trigger": "hd63jkvh2",
 		"active": "on"
 	},
-	"H1ptlnzXM": {
-		"timingType": "once",
-		"date": "5-12-17",
-		"time": "9:9",
-		"trigger": "fheu89ddj",
+	"H19ashG7f": {
+		"timingType": "daily",
+		"days": [
+			"tuesday",
+			"wednesday",
+			"thursday",
+			"sunday",
+			"monday",
+			"friday"
+		],
+		"time": "6:0",
+		"trigger": "SkUrzD6zz",
 		"active": "on"
 	},
-	"SJEhgnM7f": {
+	"S1llJTmQf": {
 		"timingType": "timer",
-		"durationInMinuts": 2,
+		"durationInMinuts": 35,
 		"trigger": "fheu89ddj",
 		"active": "on",
-		"startTime": "2017-12-28T17:58:04.101Z"
+		"startTime": "2017-12-29T13:11:03.803Z"
 	}
 }
