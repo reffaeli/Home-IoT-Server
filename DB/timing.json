@@ -101,12 +101,5 @@
 		"time": "6:0",
 		"trigger": "SkUrzD6zz",
 		"active": "on"
-	},
-	"S1llJTmQf": {
-		"timingType": "timer",
-		"durationInMinuts": 35,
-		"trigger": "fheu89ddj",
-		"active": "on",
-		"startTime": "2017-12-29T13:11:03.803Z"
 	}
 }

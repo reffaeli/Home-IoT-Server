@@ -121,6 +121,7 @@ IoTApp.controller('screensaverCtrl', function ($scope, $http) {
                     } else {
                         var shabatExsiting = new Date(sunsetDate.getTime() + 2.4e+6);
                         if (date > shabatExsiting) {
+                            $scope.isWeekend = false;
                             $scope.day = 'מוצאי שבת קודש';
                             return;
                         } else {
