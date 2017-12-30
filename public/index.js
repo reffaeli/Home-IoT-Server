@@ -49,6 +49,8 @@ IoTApp.controller('indexCtrl', function ($scope) {
 
 var isMobile;
 
+// use to know to not remove screensaver even if screen tuched
+var isShabatNow = false;
 IoTApp.controller('screensaverCtrl', function ($scope, $http) {
     $scope.clock;
     $scope.date;
@@ -104,6 +106,7 @@ IoTApp.controller('screensaverCtrl', function ($scope, $http) {
                 $scope.parashat = response.data.shabat.parashat;
 
                 $scope.isSabbat = false;
+                isShabatNow = false;
 
                 var date = new Date();
                 var dayinweek = date.getDay() + 1;
@@ -112,20 +115,22 @@ IoTApp.controller('screensaverCtrl', function ($scope, $http) {
                     var sunsetDate = new Date(response.data.sys.sunset);
 
                     if (dayinweek == 6) {
-                        var shabatEntiring = new Date(sunsetDate.getTime() - 1.8e+6);
+                        var shabatEntiring = new Date(sunsetDate.getTime() - (30 * 60000));
                         if (date > shabatEntiring) {
                             $scope.day = 'שבת קודש';
+                            isShabatNow = true;
                             $scope.isSabbat = true;
                             return;
                         }
                     } else {
-                        var shabatExsiting = new Date(sunsetDate.getTime() + 2.4e+6);
+                        var shabatExsiting = new Date(sunsetDate.getTime() + (40 * 60000));
                         if (date > shabatExsiting) {
                             $scope.isWeekend = false;
                             $scope.day = 'מוצאי שבת קודש';
                             return;
                         } else {
                             $scope.isSabbat = true;
+                            isShabatNow = true;
                         }
                     }
                 }
@@ -192,7 +197,7 @@ IoTApp.controller('mainCtrl', function ($scope, $http, updatesService) {
             if (!$scope.useScreensaver)
                 return;
             $scope.noActionInc = 0;
-            if ($scope.isScreeensaverOn) {
+            if (!isShabatNow && $scope.isScreeensaverOn) {
                 $scope.isScreeensaverOn = false;
                 $('#fsModal').modal('hide');
             }
@@ -202,7 +207,7 @@ IoTApp.controller('mainCtrl', function ($scope, $http, updatesService) {
             if (!$scope.useScreensaver)
                 return;
             $scope.noActionInc = 0;
-            if ($scope.isScreeensaverOn) {
+            if (!isShabatNow && $scope.isScreeensaverOn) {
                 $scope.isScreeensaverOn = false;
                 $('#fsModal').modal('hide');
             }

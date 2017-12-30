@@ -139,10 +139,10 @@ var GetCurrentWallpaper = (is_desktop, callback) => {
         try {
 
             if (dayinweek == 6) { // ==
-                var shabatEntiring = new Date(weather.sys.sunset - 1.8e+6); // 30 minus
+                var shabatEntiring = new Date(weather.sys.sunset.getTime() - (30 * 60000)); // 30 minus
                 isSabbat = date > shabatEntiring;
             } else {
-                var shabatExsiting = new Date(weather.sys.sunset + 2.4e+6); // 40 minuts
+                var shabatExsiting = new Date(weather.sys.sunset.getTime() + (40 * 60000)); // 40 minuts
                 isSabbat = date < shabatExsiting;
             }
 

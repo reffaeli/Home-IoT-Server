@@ -37,7 +37,7 @@
 		],
 		"time": "17:30",
 		"trigger": "veghjdjre",
-		"active": "on"
+		"active": "off"
 	},
 	"4": {
 		"timingType": "daily",
@@ -50,7 +50,7 @@
 		],
 		"time": "18:15",
 		"trigger": "fheu89ddj",
-		"active": "on"
+		"active": "off"
 	},
 	"5": {
 		"timingType": "daily",
@@ -59,7 +59,7 @@
 		],
 		"time": "20:00",
 		"trigger": "uxgnjcju6j",
-		"active": "on"
+		"active": "off"
 	},
 	"6": {
 		"timingType": "daily",
@@ -68,7 +68,7 @@
 		],
 		"time": "07:00",
 		"trigger": "hd63jkvh2",
-		"active": "on"
+		"active": "off"
 	},
 	"7": {
 		"timingType": "daily",
@@ -77,7 +77,7 @@
 		],
 		"time": "13:00",
 		"trigger": "uxgnjcju6j",
-		"active": "on"
+		"active": "off"
 	},
 	"8": {
 		"timingType": "daily",
@@ -86,7 +86,7 @@
 		],
 		"time": "16:00",
 		"trigger": "hd63jkvh2",
-		"active": "on"
+		"active": "off"
 	},
 	"H19ashG7f": {
 		"timingType": "daily",
@@ -100,6 +100,48 @@
 		],
 		"time": "6:0",
 		"trigger": "SkUrzD6zz",
+		"active": "off"
+	},
+	"B1m7GA77z": {
+		"timingType": "once",
+		"date": "29-12-17",
+		"time": "19:30",
+		"trigger": "HyNMbwaMz",
 		"active": "on"
+	},
+	"S1GSG07Qf": {
+		"timingType": "once",
+		"date": "30-12-17",
+		"time": "8:0",
+		"trigger": "hd63jkvh2",
+		"active": "on"
+	},
+	"HJbUGRmmM": {
+		"timingType": "once",
+		"date": "30-12-17",
+		"time": "16:0",
+		"trigger": "hd63jkvh2",
+		"active": "on"
+	},
+	"rkBvfRXQG": {
+		"timingType": "once",
+		"date": "30-12-17",
+		"time": "11:30",
+		"trigger": "HyNMbwaMz",
+		"active": "on"
+	},
+	"Hy65fAQXf": {
+		"timingType": "once",
+		"date": "29-12-17",
+		"time": "19:30",
+		"trigger": "r1D_GwafG",
+		"active": "on"
+	},
+	"ByIygNrmz": {
+		"timingType": "timer",
+		"durationInMinuts": 50,
+		"trigger": "fheu89ddj",
+		"active": "on",
+		"startTime": "2017-12-30T15:25:18.480Z"
 	}
 }
