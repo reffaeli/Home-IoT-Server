@@ -1,140 +1,18 @@
 {
-	"1": {
+	"rydrABrXf": {
 		"timingType": "daily",
 		"days": [
-			"sunday",
-			"monday",
-			"tuesday",
-			"wednesday",
-			"thursday"
-		],
-		"time": "05:00",
-		"trigger": "veghjdjre",
-		"active": "off"
-	},
-	"2": {
-		"timingType": "daily",
-		"days": [
-			"sunday",
-			"monday",
-			"tuesday",
-			"wednesday",
-			"thursday",
-			"friday"
-		],
-		"time": "06:35",
-		"trigger": "hd63jkvh2",
-		"active": "off"
-	},
-	"3": {
-		"timingType": "daily",
-		"days": [
-			"sunday",
-			"monday",
-			"tuesday",
-			"wednesday",
-			"thursday"
-		],
-		"time": "17:30",
-		"trigger": "veghjdjre",
-		"active": "off"
-	},
-	"4": {
-		"timingType": "daily",
-		"days": [
-			"sunday",
-			"monday",
-			"tuesday",
-			"wednesday",
-			"thursday"
-		],
-		"time": "18:15",
-		"trigger": "fheu89ddj",
-		"active": "off"
-	},
-	"5": {
-		"timingType": "daily",
-		"days": [
-			"friday"
+			"saturday"
 		],
 		"time": "20:00",
-		"trigger": "uxgnjcju6j",
-		"active": "off"
-	},
-	"6": {
-		"timingType": "daily",
-		"days": [
-			"saturday"
-		],
-		"time": "07:00",
-		"trigger": "hd63jkvh2",
-		"active": "off"
-	},
-	"7": {
-		"timingType": "daily",
-		"days": [
-			"saturday"
-		],
-		"time": "13:00",
-		"trigger": "uxgnjcju6j",
-		"active": "off"
-	},
-	"8": {
-		"timingType": "daily",
-		"days": [
-			"saturday"
-		],
-		"time": "16:00",
-		"trigger": "hd63jkvh2",
-		"active": "off"
-	},
-	"H19ashG7f": {
-		"timingType": "daily",
-		"days": [
-			"tuesday",
-			"wednesday",
-			"thursday",
-			"sunday",
-			"monday",
-			"friday"
-		],
-		"time": "6:0",
-		"trigger": "SkUrzD6zz",
-		"active": "off"
-	},
-	"B1m7GA77z": {
-		"timingType": "once",
-		"date": "29-12-17",
-		"time": "19:30",
-		"trigger": "HyNMbwaMz",
+		"trigger": "fheu89ddj",
 		"active": "on"
 	},
-	"S1GSG07Qf": {
+	"r1Sv0BrXM": {
 		"timingType": "once",
 		"date": "30-12-17",
-		"time": "8:0",
-		"trigger": "hd63jkvh2",
-		"active": "on"
-	},
-	"HJbUGRmmM": {
-		"timingType": "once",
-		"date": "30-12-17",
-		"time": "16:0",
-		"trigger": "hd63jkvh2",
-		"active": "on"
-	},
-	"rkBvfRXQG": {
-		"timingType": "once",
-		"date": "30-12-17",
-		"time": "11:30",
-		"trigger": "HyNMbwaMz",
-		"active": "on"
-	},
-	"Hy65fAQXf": {
-		"timingType": "once",
-		"date": "29-12-17",
-		"time": "19:30",
-		"trigger": "r1D_GwafG",
+		"time": "20:02",
+		"trigger": "fheu89ddj",
 		"active": "on"
 	}
 }
