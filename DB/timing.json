@@ -136,12 +136,5 @@
 		"time": "19:30",
 		"trigger": "r1D_GwafG",
 		"active": "on"
-	},
-	"ByIygNrmz": {
-		"timingType": "timer",
-		"durationInMinuts": 50,
-		"trigger": "fheu89ddj",
-		"active": "on",
-		"startTime": "2017-12-30T15:25:18.480Z"
 	}
 }
